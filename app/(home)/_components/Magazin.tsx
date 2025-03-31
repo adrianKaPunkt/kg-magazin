@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 const title = [
   {
@@ -24,6 +25,21 @@ const title = [
 
 const Magazin = () => {
   const [index, setIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleTogglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -160,17 +176,30 @@ const Magazin = () => {
         </motion.div>
 
         {/* Bild */}
-        <Image
-          src="/images/cover-image.png"
-          alt="Klaus Gerth"
-          width={600}
-          height={800}
-          className="absolute left-1/2 -translate-x-1/2 w-[60%] max-w-[80%] object-contain pointer-events-none z-10 grayscale"
-          priority
+        <motion.div
+          initial={{ x: -60, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            duration: 1.2,
+            delay: 0.8,
+            ease: 'easeOut',
+          }}
           style={{
             top: 'clamp(5%, 3vh, 12%)',
           }}
-        />
+          className="absolute left-1/2 -translate-x-1/2 w-[60%] max-w-[80%] z-10">
+          <Image
+            onClick={handleTogglePlay}
+            src="/images/cover-image.png"
+            alt="Klaus Gerth"
+            width={600}
+            height={800}
+            className=" object-contain grayscale cursor-pointer"
+            priority
+          />
+        </motion.div>
+
+        <audio ref={audioRef} src="/audio/kg_intro.mp3" />
       </div>
     </div>
   );
