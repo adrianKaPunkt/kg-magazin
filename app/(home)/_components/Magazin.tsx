@@ -51,7 +51,7 @@ const Magazin = () => {
   const current = title[index];
 
   return (
-    <div className="min-h-screen w-full grid place-items-center bg-neutral-100 overflow-auto py-4">
+    <div className="min-h-screen w-full grid place-items-center bg-white overflow-auto py-4">
       <div
         style={{ containerType: 'inline-size' }}
         className="
@@ -67,8 +67,8 @@ const Magazin = () => {
           h-auto
           relative
           bg-white
-          shadow-xl
-          rounded-md
+          md:shadow-xl
+          md:rounded-md
           overflow-hidden
         ">
         {/* Titel */}
@@ -89,9 +89,9 @@ const Magazin = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="absolute left-[5%] top-[22%] whitespace-pre-line z-10 leading-2.6 text-[8px] md:text-xs"
+          className="absolute cursor-pointer hover:scale-130 left-[5%] top-[22%] whitespace-pre-line z-10 leading-2.6 text-[8px] md:text-xs"
           style={{
-            top: 'clamp(10%, 20vh, 14%)',
+            top: 'clamp(10%, 20vh, 15%)',
           }}>
           {current.subtitle}
         </motion.p>
@@ -101,7 +101,7 @@ const Magazin = () => {
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.8 }}
-          className="absolute left-[8%] font-helvetica-compressed z-20"
+          className="absolute left-[8%] font-helvetica-compressed z-20 cursor-pointer hover:scale-110"
           style={{
             color: current.color,
             top: 'clamp(41%, 20vh, 14%)',
@@ -114,7 +114,7 @@ const Magazin = () => {
             <p>KLAUS</p>
             <p>GERTH</p>
           </div>
-          <p className="text-sm sm:text-base text-neutral-700 tracking-widest mt-1">
+          <p className="text-sm sm:text-base text-neutral-600 tracking-widest mt-1">
             AUTOR · VERLEGER
           </p>
         </motion.div>
@@ -124,8 +124,8 @@ const Magazin = () => {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 1.4 }}
-          className="absolute bottom-78 right-[6%] text-right z-20"
-          style={{ bottom: 'clamp(30%, 3vh, 12%)' }}>
+          className="absolute bottom-78 right-[6%] text-right z-20 cursor-pointer hover:scale-110"
+          style={{ bottom: 'clamp(30%, 3cqh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide leading-none"
             style={{
@@ -134,8 +134,8 @@ const Magazin = () => {
             }}>
             DIA-PRINZIP
           </p>
-          <p className="font-helvetica-compressed text-[6px] lg:text-sm text-neutral-700 tracking-widest leading-snug">
-            WIE DAS DIA PRINZIP DICH UND
+          <p className="font-helvetica-compressed text-[6px] lg:text-sm text-neutral-600 tracking-widest leading-snug">
+            WIE DAS «DIA-PRINZIP» DICH UND
             <br />
             DIE WELT VERÄNDERN WIRD
           </p>
@@ -146,7 +146,7 @@ const Magazin = () => {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 2 }}
-          className="absolute right-[6%] text-right z-20"
+          className="absolute right-[6%] text-right z-20 cursor-pointer hover:scale-110"
           style={{ bottom: 'clamp(20%, 3vh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
@@ -163,7 +163,7 @@ const Magazin = () => {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 2.5 }}
-          className="absolute bottom-36 right-[6%] text-right z-10"
+          className="absolute bottom-36 right-[6%] text-right z-10 cursor-pointer hover:scale-110"
           style={{ bottom: 'clamp(10%, 3vh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
@@ -187,14 +187,14 @@ const Magazin = () => {
           style={{
             top: 'clamp(5%, 3vh, 12%)',
           }}
-          className="absolute left-1/2 -translate-x-1/2 w-[60%] max-w-[80%] z-10">
+          className="absolute left-1/2 -translate-x-1/2 w-[60%] max-w-[70%] z-10">
           <Image
             onClick={handleTogglePlay}
             src="/images/cover-image.png"
             alt="Klaus Gerth"
             width={600}
             height={800}
-            className=" object-contain grayscale cursor-pointer"
+            className=" object-contain grayscale hover:grayscale-25 cursor-pointer hover:scale-105 transition-transform duration-450"
             priority
           />
         </motion.div>

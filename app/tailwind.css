@@ -1,6 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-vogue: "Vogue", "serif";
-  --font-helvetica-compressed: "HelveticaCompressed", "sans-serif";
+  --font-vogue: 'Vogue', 'serif';
+  --font-helvetica-compressed: 'HelveticaCompressed', 'sans-serif';
+  --font-lora-semibold: 'LoraSemibold', 'serif';
 }
