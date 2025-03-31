@@ -98,7 +98,7 @@ const Magazin = () => {
             <p>KLAUS</p>
             <p>GERTH</p>
           </div>
-          <p className="text-sm sm:text-base text-neutral-700 tracking-wide mt-1">
+          <p className="text-sm sm:text-base text-neutral-700 tracking-widest mt-1">
             AUTOR · VERLEGER
           </p>
         </motion.div>
@@ -109,7 +109,7 @@ const Magazin = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 1.4 }}
           className="absolute bottom-78 right-[6%] text-right z-20"
-          style={{ bottom: 'clamp(40%, 3vh, 12%)' }}>
+          style={{ bottom: 'clamp(30%, 3vh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide leading-none"
             style={{
@@ -118,7 +118,7 @@ const Magazin = () => {
             }}>
             DIA-PRINZIP
           </p>
-          <p className="font-helvetica-compressed text-xs md:text-sm text-neutral-700 tracking-wide leading-snug">
+          <p className="font-helvetica-compressed text-[6px] lg:text-sm text-neutral-700 tracking-widest leading-snug">
             WIE DAS DIA PRINZIP DICH UND
             <br />
             DIE WELT VERÄNDERN WIRD
@@ -131,7 +131,7 @@ const Magazin = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 2 }}
           className="absolute right-[6%] text-right z-20"
-          style={{ bottom: 'clamp(30%, 3vh, 12%)' }}>
+          style={{ bottom: 'clamp(20%, 3vh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
             style={{
@@ -148,7 +148,7 @@ const Magazin = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.4, delay: 2.5 }}
           className="absolute bottom-36 right-[6%] text-right z-10"
-          style={{ bottom: 'clamp(20%, 3vh, 12%)' }}>
+          style={{ bottom: 'clamp(10%, 3vh, 12%)' }}>
           <p
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
             style={{
