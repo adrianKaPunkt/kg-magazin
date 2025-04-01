@@ -1,4 +1,5 @@
 import About from './_components/About';
+import DIAPrincip from './_components/DIAPrincip';
 import Hero from './_components/Hero';
 import Navbar from './_components/Navbar';
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <DIAPrincip />
     </main>
   );
 }
