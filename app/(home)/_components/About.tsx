@@ -1,10 +1,19 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const About = () => {
   return (
     <section className="relative w-full max-w-5xl mx-auto px-9 pt-24 lg:mt-40">
+      {/* Hintergrundbild */}
+      <div className="absolute inset-0 z-0 pointer-events-none hidden lg:block">
+        <Image
+          src="/images/paper.jpg"
+          alt="Klaus Gerth - Über mich"
+          fill
+          className="object-cover opacity-10"
+        />
+      </div>
       {/* Überschrift */}
-      <h1 className="font-vogue text-5xl lg:text-7xl">ÜBER MICH</h1>
+      <h1 className="font-vogue text-5xl lg:text-8xl">ÜBER MICH</h1>
 
       {/* Grid und Texte über dem Bild */}
       <div className="relative z-10 mt-12 md:mt-20">
@@ -22,7 +31,7 @@ const About = () => {
           </div>
 
           {/* Rechter Textblock */}
-          <div className="col-span-1 col-start-1 lg:col-start-4 text-sm font-light leading-[30px] pt-6 md:pt-40 lg:text-right text-neutral-700">
+          <div className="col-span-1 col-start-1 lg:col-start-4 text-sm font-light leading-[30px] pt-6 lg:pt-40 lg:text-right text-neutral-700">
             <p>
               Stundenlang. Tagelang. Wir konnten nicht genug bekommen! Eine
               Bibelstelle veränderte alles: Johannes 3, das Gespräch zwischen
@@ -32,7 +41,7 @@ const About = () => {
         </div>
 
         {/* Absolutes Bild */}
-        <div className="pt-14 md:pt-0 md:absolute w-[100%] md:right-5 lg:top-16 md:scale-x-[-1] lg:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[70%] z-0 pointer-events-none">
+        <div className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] md:right-5 md:-top-8 lg:top-16 md:scale-x-[-1] lg:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[70%] z-0 pointer-events-none">
           <Image
             src="/images/klaus-gerth.png"
             alt="Klaus Gerth"
@@ -44,11 +53,33 @@ const About = () => {
 
         {/* Zitat unter dem Bild */}
         <div className="mt-16 lg:mt-96 ">
-          <h2 className="font-lora-semibold text-4xl text-center leading-relaxed text-neutral-800">
-            <p>“Nur noch eins war wichtig:</p>{" "}
+          <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
+            <p>“Nur noch eins war wichtig:</p>{' '}
             <p>Gottes Plan für mein Leben.“</p>
           </h2>
         </div>
+
+        {/* Grid und Texte über dem Bild */}
+        <div className="grid md:grid-cols-2 gap-8 mt-10 mb-16">
+          {/* Linker Textblock */}
+          <div className="col-span-1 text-sm font-light leading-[30px] text-neutral-900 space-y-6">
+            <p>
+              In diesem Moment geschah es – wir wurden neu geboren. Nicht
+              körperlich, sondern im Herzen. Durch den Geist Gottes, der sich
+              denen offenbart, die ihn wirklich suchen. Wir wussten: Jetzt sind
+              wir eine neue Schöpfung.
+            </p>
+          </div>
+          {/* Rechter Textblock */}
+          <div className="col-span-1 pt-6 md:pt-0 text-sm font-light leading-[30px] text-neutral-900 md:text-right">
+            <p>
+              Und auf einmal rückte meine Karriere in den Hintergrund. Nur noch
+              eines war wichtig: Gottes Plan für mein Leben.
+            </p>
+            <p>Und ich traf eine mutige Entscheidung!</p>
+          </div>
+        </div>
+        <div className="hidden lg:block h-20 border-t border-neutral-600"></div>
       </div>
     </section>
   );

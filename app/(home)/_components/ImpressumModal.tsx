@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
-export default function ImpressumModal() {
+export const ImpressumModal = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -122,4 +122,6 @@ export default function ImpressumModal() {
       </Dialog>
     </>
   );
-}
+};
+
+export default ImpressumModal;
