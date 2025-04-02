@@ -3,19 +3,20 @@
 import React, { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { MathUtils, ShaderMaterial, AdditiveBlending } from 'three';
+import { MeshProps } from '@react-three/fiber';
 import { Vector3 } from 'three';
 import { IcosahedronGeometry } from 'three';
 import * as THREE from 'three';
 
 // Extend JSX to allow icosahedronGeometry
-import { ReactThreeFiber } from '@react-three/fiber';
-
-declare module '@react-three/fiber' {
-  interface ThreeElements {
-    icosahedronGeometry: ReactThreeFiber.Object3DNode<
-      IcosahedronGeometry,
-      typeof IcosahedronGeometry
-    >;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      icosahedronGeometry: ReactThreeFiber.Object3DNode<
+        IcosahedronGeometry,
+        typeof IcosahedronGeometry
+      >;
+    }
   }
 }
 
