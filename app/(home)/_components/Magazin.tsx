@@ -8,17 +8,17 @@ import { useRef } from 'react';
 const title = [
   {
     word: 'DREAM',
-    color: '#50d88d',
+    color: '#4fcf67',
     subtitle: 'Alles beginnt\nmit einem Traum',
   },
   {
     word: 'IMAGINE',
-    color: '#834eef',
+    color: '#57B7FA',
     subtitle: 'Die Kraft\nder Vorstellung',
   },
   {
     word: 'ACT',
-    color: '#d947cd',
+    color: '#FA57F2',
     subtitle: 'Der Mut,\nes zu tun',
   },
 ];
@@ -66,6 +66,7 @@ const Magazin = () => {
           h-auto
           relative
           bg-white
+          md:bg-gray-200
           md:shadow-xl
           md:rounded-md
           overflow-hidden

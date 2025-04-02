@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
 // import UserNavButton from './UserNavButton';
 // import BasketButton from './BasketButton';
-import AudioPlayer from "./AudioPlayer";
-import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+import AudioPlayer from './AudioPlayer';
+import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 // import useBasketStore from '@/store/basket-store';
-import { Button } from "@/components/ui/button";
-import ImpressumModal from "./ImpressumModal";
+import { Button } from '@/components/ui/button';
+import ImpressumModal from './ImpressumModal';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,24 +19,23 @@ const Navbar = () => {
   // );
 
   const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "SHOP", path: "http://www.bestselleroffice.com" },
+    { name: 'HOME', path: '/' },
+    { name: 'SHOP', path: 'http://www.bestselleroffice.com' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <nav
-      className={`z-50 fixed top-0 left-0 w-full px-2 sm:p-2 ${
-        scrolled ? "bg-gray-white" : "shadow-none"
-      }`}
-    >
+      className={`z-50 absolute top-0 left-0 w-full px-2 sm:p-2 ${
+        scrolled ? 'bg-gray-white' : 'shadow-none'
+      }`}>
       <div className="">
         <div className="pl-4 flex justify-between items-center py-3">
           <div className="flex items-center">
@@ -47,7 +46,7 @@ const Navbar = () => {
                 <span className="font-extrabold">GERTH</span>
               </h1>
             </Link>
-            <AudioPlayer src="/audio/amazing_grace.mp3" />
+            <AudioPlayer src="/audio/amazing_grac.mp3" />
           </div>
 
           {/* Mobile Menu Button (Hamburger/X) */}
@@ -55,8 +54,7 @@ const Navbar = () => {
             <div className="flex flex-row-reverse gap-x-3 items-center">
               <button
                 className="z-50 text-black hover:text-gray-500"
-                onClick={() => setMenuOpen(!menuOpen)}
-              >
+                onClick={() => setMenuOpen(!menuOpen)}>
                 {menuOpen ? (
                   <X className="w-8 h-8" />
                 ) : (
@@ -91,8 +89,7 @@ const Navbar = () => {
                   <Link
                     href={item.path}
                     className="text-2xl font-semibold hover:text-gray-500 leading-[50px]"
-                    onClick={() => setMenuOpen(false)}
-                  >
+                    onClick={() => setMenuOpen(false)}>
                     {item.name}
                   </Link>
                 </li>
@@ -101,11 +98,11 @@ const Navbar = () => {
 
             {/* LANGUAGES */}
             <div className="flex mt-9">
-              <Button variant={"ghost"}>de</Button>
-              {"  |  "}
-              <Button variant={"ghost"}>en</Button>
-              {"  |  "}
-              <Button variant={"ghost"}>es</Button>
+              <Button variant={'ghost'}>de</Button>
+              {'  |  '}
+              <Button variant={'ghost'}>en</Button>
+              {'  |  '}
+              <Button variant={'ghost'}>es</Button>
             </div>
 
             {/* SOCIAL MEDIA */}
@@ -114,8 +111,7 @@ const Navbar = () => {
               <Link
                 href="https://www.instagram.com/gerth.klaus/"
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 <FaInstagram />
               </Link>
               <FaYoutube />
@@ -129,7 +125,7 @@ const Navbar = () => {
 
             {/* Impressum & Copyright */}
             <div className="mt-4 text-center">
-              <ImpressumModal />{" "}
+              <ImpressumModal />{' '}
               {/* Impressum öffnet sich unabhängig von Navbar */}
               <p className="text-xs mt-4">
                 © {new Date().getFullYear()} klausgerth.com. Alle Rechte
