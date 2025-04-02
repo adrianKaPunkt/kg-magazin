@@ -1,6 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
+import * as THREE from 'three';
 import { Suspense, useRef, useLayoutEffect } from 'react';
 import Blob from './Blob';
 import { OrbitControls, Stars } from '@react-three/drei';
@@ -50,14 +51,14 @@ const blobPhases = [
 
 const DIAPrincip = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const blobRef = useRef<any>(null);
+  const blobRef = useRef<THREE.Group | null>(null);
   const cloudRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !blobRef.current) return;
 
     const mesh = blobRef.current.children[0]; // Zugriff auf das Blob-Mesh
-    const material = mesh.material;
+    const material = (mesh as THREE.Mesh).material as THREE.ShaderMaterial;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -79,7 +80,7 @@ const DIAPrincip = () => {
     gsap.to('body', {
       backgroundColor: '#d6ecff', // zartes Hellblau
       scrollTrigger: {
-        trigger: dreamSectionRef.current,
+        trigger: sectionRef.current,
         start: 'top bottom',
         end: 'top center',
         scrub: true,
@@ -89,7 +90,7 @@ const DIAPrincip = () => {
     gsap.to(cloudRef.current, {
       opacity: 1,
       scrollTrigger: {
-        trigger: dreamSectionRef.current,
+        trigger: sectionRef.current,
         start: 'top center',
         end: 'bottom top',
         scrub: true,
