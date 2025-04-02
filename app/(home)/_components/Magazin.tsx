@@ -4,24 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-
-const title = [
-  {
-    word: 'DREAM',
-    color: '#4fcf67',
-    subtitle: 'Alles beginnt\nmit einem Traum',
-  },
-  {
-    word: 'IMAGINE',
-    color: '#57B7FA',
-    subtitle: 'Die Kraft\nder Vorstellung',
-  },
-  {
-    word: 'ACT',
-    color: '#FA57F2',
-    subtitle: 'Der Mut,\nes zu tun',
-  },
-];
+import { diaPhases } from '@/lib/diaPhases';
 
 const Magazin = () => {
   const [index, setIndex] = useState(0);
@@ -43,12 +26,12 @@ const Magazin = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % title.length);
+      setIndex((prev) => (prev + 1) % diaPhases.length);
     }, 6000);
     return () => clearInterval(interval);
   }, []);
 
-  const current = title[index];
+  const current = diaPhases[index];
 
   return (
     <div className="min-h-screen w-full grid place-items-center bg-white overflow-auto pt-4 pb-12">
@@ -81,7 +64,7 @@ const Magazin = () => {
             fontSize: 'clamp(4rem, 25cqw, 16rem)',
             color: current.color,
           }}>
-          {current.word}
+          {current.label}
         </motion.h1>
 
         {/* Subtitel */}
@@ -93,7 +76,7 @@ const Magazin = () => {
           style={{
             top: 'clamp(10%, 20vh, 15%)',
           }}>
-          {current.subtitle}
+          {current.description}
         </motion.p>
 
         {/* KLAUS GERTH */}

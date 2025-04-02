@@ -1,13 +1,11 @@
 'use client';
 
-import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Suspense, useRef, useLayoutEffect } from 'react';
-import Blob from './Blob';
-import { OrbitControls, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import BlobScene from './blob/BlobScene';
+import { useLayoutEffect, useRef } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 const blobPhases = [
@@ -105,17 +103,21 @@ const DIAPrincip = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[160vh] w-full bg-white overflow-hidden">
+      className="px-6 relative min-h-[160vh] mx-auto w-full md:max-w-5xl xl:max-w-7xl bg-white overflow-hidden">
       {/* Scroll-Einstieg – leerer Bereich oben */}
-      <div className="h-[50vh]" />
+      <div className="h-[20vh]" />
 
-      {/* Text-Overlay */}
+      <h1 className="font-vogue text-5xl lg:text-8xl pb-6 text-center">
+        DAS DIA PRINZIP
+      </h1>
+
+      {/* Text-1 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.4 }}
         className="flex justify-center pt-80">
-        <h2 className="font-lora-semibold leading-snug text-2xl sm:text-3xl md:text-4xl font-light text-center text-neutral-900 max-w-xl">
+        <h2 className="mt-102 font-lora-semibold leading-snug text-2xl sm:text-3xl md:text-4xl font-light text-center text-neutral-900 max-w-xl">
           Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte – und
           entfaltet seine Kraft im Universum.
         </h2>
@@ -140,44 +142,7 @@ const DIAPrincip = () => {
 
       {/* Three.js Canvas */}
       <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.4} />
-            <directionalLight position={[5, 5, 5]} intensity={1} />
-
-            {/* Stars für Hintergrund */}
-            <Stars
-              radius={100}
-              depth={50}
-              count={3000}
-              factor={4}
-              saturation={0}
-              fade
-            />
-
-            {/* Blob mit GSAP Ref */}
-            <group ref={blobRef}>
-              <Blob
-                scale={0.3}
-                intensity={0.3}
-                glow={0.2}
-                position={[0, 1.2, 0]}
-                color={blobPhases[0].rgb.map((c) => c / 255)}
-                pulse
-                pulseAmount={0.03}
-                pulseSpeed={1.5}
-              />
-            </group>
-
-            {/* Steuerung optional */}
-            <OrbitControls
-              enableZoom={false}
-              enablePan={false}
-              autoRotate
-              autoRotateSpeed={0.3}
-            />
-          </Suspense>
-        </Canvas>
+        <BlobScene />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 // import UserNavButton from './UserNavButton';
@@ -9,7 +9,7 @@ import AudioPlayer from './AudioPlayer';
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 // import useBasketStore from '@/store/basket-store';
 import { Button } from '@/components/ui/button';
-import ImpressumModal from './ImpressumModal';
+import ImpressumModal from '../ImpressumModal';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

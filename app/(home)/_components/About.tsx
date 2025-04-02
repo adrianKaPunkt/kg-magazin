@@ -34,7 +34,7 @@ const About = () => {
   });
 
   return (
-    <section className="relative w-full max-w-5xl mx-auto px-9 pt-16 lg:mt-40">
+    <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40">
       {/* Hintergrundbild */}
       <motion.div
         ref={paperRef}
@@ -42,7 +42,7 @@ const About = () => {
         animate={paperInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: false, amount: 1 }}
-        className="absolute inset-0 z-0 pointer-events-none hidden lg:block">
+        className="w-full inset-0 z-0 pointer-events-none hidden lg:block">
         <Image
           src="/images/paper.jpg"
           alt="Klaus Gerth - Über mich"
@@ -78,7 +78,7 @@ const About = () => {
             animate={leftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.6 }}
             viewport={{ once: false, amount: 1 }}
-            className="col-span-1 text-base font-light leading-[30px] text-neutral-900 space-y-6">
+            className="col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>Hi, mein Name ist Klaus Gerth…</p>
             <p>
               Als junger Mann war ich erfolgreich - beruflich lief alles
@@ -96,7 +96,7 @@ const About = () => {
             animate={rightInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.6 }}
             viewport={{ once: false, amount: 1 }}
-            className="col-span-1 col-start-1 lg:col-start-4 font-light leading-[30px] pt-6 lg:pt-40 lg:text-right text-neutral-700">
+            className="col-span-1 text-base xl:text-xl col-start-1 lg:col-start-4 font-light leading-[30px] xl:leading-[40px] pt-6 lg:pt-40 lg:text-right text-neutral-700">
             <p>
               Stundenlang. Tagelang. Wir konnten nicht genug bekommen! Eine
               Bibelstelle veränderte alles: Johannes 3, das Gespräch zwischen
@@ -108,13 +108,11 @@ const About = () => {
         {/* Absolutes Bild */}
         <motion.div
           ref={imageRef}
-          initial={{ opacity: 0, scale: 0.95, y: 50 }}
-          animate={
-            imageInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0 }
-          }
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.1 }}
           viewport={{ once: false, amount: 1 }}
-          className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] md:right-5 md:-top-8 lg:top-2 md:scale-x-[-1] lg:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[75%] z-0 hover:scale-110 hover:top-1 transition-all duration-1200 ease-in-out cursor-pointer">
+          className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] xl:w-[80%] md:right-5 md:-top-8 lg:top-2 md:scale-x-[-1] lg:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[75%] z-0 hover:scale-110 hover:top-1 transition-all duration-1200 ease-in-out cursor-pointer">
           <Image
             src="/images/klaus-gerth.png"
             alt="Klaus Gerth"
@@ -129,9 +127,9 @@ const About = () => {
           ref={quoteRef}
           initial={{ opacity: 0 }}
           animate={quoteInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
           viewport={{ once: false, amount: 1 }}
-          className="mt-16 lg:mt-84 ">
+          className="mt-16 lg:mt-84 xl:mt-[500px]">
           <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
             <p>“Nur noch eins war wichtig:</p>{' '}
             <p>Gottes Plan für mein Leben.“</p>
@@ -147,7 +145,7 @@ const About = () => {
             animate={bLeftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.6 }}
             viewport={{ once: false, amount: 1 }}
-            className="col-span-1 font-light leading-[30px] text-neutral-900 space-y-6">
+            className="text-base xl:text-xl col-span-1 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>
               In diesem Moment geschah es – wir wurden neu geboren. Nicht
               körperlich, sondern im Herzen. Durch den Geist Gottes, der sich
@@ -162,7 +160,7 @@ const About = () => {
             animate={bRightInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.6 }}
             viewport={{ once: false, amount: 1 }}
-            className="col-span-1 pt-6 md:pt-0 font-light leading-[30px] text-neutral-900 md:text-right">
+            className="text-base xl:text-xl col-span-1 pt-6 md:pt-0 font-light leading-[30px] xl:leading-[40px] text-neutral-900 md:text-right">
             <p>
               Und auf einmal rückte meine Karriere in den Hintergrund. Nur noch
               eines war wichtig: Gottes Plan für mein Leben.
