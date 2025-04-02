@@ -9,14 +9,14 @@ import { IcosahedronGeometry } from 'three';
 import * as THREE from 'three';
 
 // Extend JSX to allow icosahedronGeometry
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      icosahedronGeometry: ReactThreeFiber.Object3DNode<
-        IcosahedronGeometry,
-        typeof IcosahedronGeometry
-      >;
-    }
+import { ReactThreeFiber } from '@react-three/fiber';
+
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    icosahedronGeometry: ReactThreeFiber.Object3DNode<
+      IcosahedronGeometry,
+      typeof IcosahedronGeometry
+    >;
   }
 }
 
