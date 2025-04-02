@@ -2,14 +2,13 @@
 
 import React, { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { MathUtils, ShaderMaterial, AdditiveBlending, Vector3 } from 'three';
+import { MathUtils, ShaderMaterial, AdditiveBlending } from 'three';
 import { IcosahedronGeometry } from 'three';
-import { MeshProps } from '@react-three/fiber';
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
 import * as THREE from 'three';
 
-interface BlobProps extends MeshProps {
+interface BlobProps {
   scale?: number;
   intensity?: number;
   hoverIntensity?: number;
@@ -75,7 +74,7 @@ const Blob: React.FC<BlobProps> = ({
     <mesh
       ref={mesh}
       scale={scale}
-      position={position as Vector3}
+      position={new THREE.Vector3(...position)}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
       {...props}>
