@@ -21,6 +21,7 @@ const DIAPrincip = () => {
   const actRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    setPhase(initialPhase);
     const triggers = [
       { ref: dreamRef, phase: diaPhases[0] },
       { ref: imagineRef, phase: diaPhases[1] },
@@ -41,19 +42,21 @@ const DIAPrincip = () => {
     });
 
     if (initialRef.current) {
+      console.log('Initial ref:', initialRef.current);
       ScrollTrigger.create({
         trigger: initialRef.current,
-        start: 'top top',
-        end: 'bottom bottom',
+        start: 'top center',
+        end: 'bottom top',
         onEnter: () => setPhase(initialPhase),
         onEnterBack: () => setPhase(initialPhase),
+        markers: false,
       });
     }
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#blob-trigger',
-        start: '21% 21%',
+        start: '-300% 21%',
         end: 'bottom bottom',
         scrub: 1,
         toggleActions: 'play none none reverse',
@@ -70,37 +73,41 @@ const DIAPrincip = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
+    console.log('🟢 currentPhase:', setPhase);
   }, [setPhase]);
 
   return (
     <>
       {/* Blob-Trigger für ScrollTrigger */}
       <div className="relative mt-56">
-        <div id="blob-trigger" className="h-16" />
-        <h1 className="font-vogue text-5xl lg:text-8xl text-center z-50">
-          DAS DIA-PRINZIP
-        </h1>
+        <div id="blob-trigger" className="z-20 h-16 bg-amber-400" />
         {/* Intro */}
         <section
           ref={initialRef}
-          className="relative h-[120vh] flex justify-center items-center z-50">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-center px-6 max-w-xl">
-            <h2 className="leading-relaxed text-3xl md:text-5xl font-light text-neutral-900">
-              Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte – und
-              entfaltet seine Kraft im Universum.
-            </h2>
-          </motion.div>
+          className="relative h-[120vh] flex justify-center z-20">
+          <div className="block">
+            <h1 className="z-20 font-vogue text-5xl lg:text-8xl text-center">
+              <p>DAS</p>
+              <p>DIA-PRINZIP</p>
+            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="z-20 text-center px-6 max-w-xl">
+              <h2 className="leading-relaxed text-2xl md:text-3xl font-light text-neutral-900 pointer-events-auto mt-[600px]">
+                Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte –
+                und entfaltet seine Kraft im Universum.
+              </h2>
+            </motion.div>
+          </div>
         </section>
 
         {/* DREAM */}
         <section
           ref={dreamRef}
-          className="relative z-50 h-screen flex items-center justify-center">
-          <h2 className="text-3xl md:text-5xl font-light text-neutral-900 text-center max-w-xl">
+          className="relative z-20 h-screen flex items-center justify-center">
+          <h2 className="z-20 text-3xl md:text-5xl font-light text-neutral-900 text-center max-w-xl">
             Ein Tropfen Vision fällt ins Unbekannte.
           </h2>
         </section>
@@ -108,8 +115,8 @@ const DIAPrincip = () => {
         {/* IMAGINE */}
         <section
           ref={imagineRef}
-          className="relative z-50 h-screen flex items-center justify-center">
-          <h2 className="text-3xl md:text-5xl font-light text-white text-center max-w-xl">
+          className="relative z-20 h-screen flex items-center justify-center">
+          <h2 className="z-20 text-3xl md:text-5xl font-light text-white text-center max-w-xl">
             Ideen formen Welten, noch bevor sie existieren.
           </h2>
         </section>
@@ -117,15 +124,16 @@ const DIAPrincip = () => {
         {/* ACT */}
         <section
           ref={actRef}
-          className="relative z-50 h-screen flex items-center justify-center">
+          className="relative z-20 h-screen flex items-center justify-center">
           <h2 className="text-3xl md:text-5xl font-light text-white text-center max-w-xl">
             Der Moment, in dem Vision Realität wird.
           </h2>
         </section>
-        <section className="relative z-50 h-screen flex items-center justify-center"></section>
+        <section className="relative z-20 h-screen flex items-center justify-center"></section>
+        {/* BLOB */}
         <div
           id="blob-wrapper"
-          className="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
+          className="fixed top-0 left-0 w-full h-screen z-[5]">
           <BlobScene isMobile={isMobile} />
         </div>
       </div>

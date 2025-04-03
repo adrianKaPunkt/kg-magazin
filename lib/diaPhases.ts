@@ -1,12 +1,12 @@
-export const initialPhase = {
+export const initialPhase: DiaPhase = {
   id: 'initial',
   label: 'INITIAL',
   color: '#95F9F4',
   backgroundColor: '#ffffff',
   description: 'Initial Phase',
-  rgb: [149, 249, 244] as [number, number, number],
-  glow: 0.2,
-  intensity: 0.2,
+  glow: 0.8,
+  intensity: 0.3,
+  quote: 'Ein Tropfen Vision fällt ins Unbekannte.',
   scale: 0.6,
   position: {
     desktop: [0, 0, 0] as [number, number, number],
@@ -21,8 +21,8 @@ export const diaPhases: DiaPhase[] = [
     color: '#60DC46',
     backgroundColor: '#CAD5DA',
     description: 'Alles beginnt\nmit einem Traum.',
-    glow: 0.3,
-    intensity: 0.25,
+    glow: 1,
+    intensity: 0.3,
     quote: 'Ein Tropfen Vision fällt ins Unbekannte.',
     scale: 0.6,
     position: {
@@ -36,7 +36,7 @@ export const diaPhases: DiaPhase[] = [
     color: '#24A9EF',
     backgroundColor: '#0E1E36',
     description: 'Die Kraft\nder Vorstellung.',
-    glow: 0.4,
+    glow: 1,
     intensity: 0.3,
     quote: 'Ideen formen Welten, noch bevor sie existieren.',
     scale: 0.6,
@@ -51,8 +51,8 @@ export const diaPhases: DiaPhase[] = [
     color: '#EB35F5',
     backgroundColor: '#000000',
     description: 'Der Mut,\nes zu tun.',
-    glow: 0.5,
-    intensity: 0.4,
+    glow: 1,
+    intensity: 0.3,
     quote: 'Der Moment, in dem Vision Realität wird.',
     scale: 0.6,
     position: {

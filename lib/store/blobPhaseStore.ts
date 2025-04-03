@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { DiaPhase } from '@/lib/diaPhases';
+import { DiaPhase, initialPhase } from '@/lib/diaPhases';
 
 type BlobPhaseStore = {
   currentPhase: DiaPhase;
@@ -7,18 +7,9 @@ type BlobPhaseStore = {
 };
 
 export const useBlobPhaseStore = create<BlobPhaseStore>((set) => ({
-  currentPhase: {
-    id: 'initial',
-    label: 'INITIAL',
-    color: '#95F9F4',
-    backgroundColor: '#ffffff',
-    description: 'Initial Phase',
-    glow: 0.2,
-    intensity: 0.2,
-    position: {
-      desktop: [0, 1.5, 0],
-      mobile: [0, 1.2, 0],
-    },
+  currentPhase: initialPhase,
+  setPhase: (phase) => {
+    console.log('✅ STORE Phase gesetzt:', phase.label);
+    set({ currentPhase: phase });
   },
-  setPhase: (phase) => set({ currentPhase: phase }),
 }));

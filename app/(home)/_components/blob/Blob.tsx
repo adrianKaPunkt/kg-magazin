@@ -1,89 +1,88 @@
 'use client';
 
-import React, { useMemo, useRef } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { MathUtils, ShaderMaterial, AdditiveBlending } from 'three';
-import { IcosahedronGeometry } from 'three';
+import * as THREE from 'three';
+import { MathUtils, AdditiveBlending } from 'three';
+
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
-import * as THREE from 'three';
 
-interface BlobProps {
+type BlobProps = {
   scale?: number;
   intensity?: number;
   hoverIntensity?: number;
   glow?: number;
   position?: [number, number, number];
-  color?: [number, number, number];
+  color?: [number, number, number]; // normalized (0–1)
   pulse?: boolean;
   pulseAmount?: number;
   pulseSpeed?: number;
-}
+};
 
 const Blob: React.FC<BlobProps> = ({
-  scale = 1,
-  intensity = 0.3,
+  scale = 0.6,
+  intensity = 1,
   hoverIntensity = 1,
-  glow = 0.3,
+  glow = 1,
   position = [0, 0, 0],
-  color = [0.4, 0.7, 1.0],
-  pulse = false,
-  pulseAmount = 0.02,
-  pulseSpeed = 1,
-  ...props
+  color = [1, 1, 1], // Default: weiß
+  // pulse = true,
+  // pulseAmount = 0.03,
+  // pulseSpeed = 1,
 }) => {
   const mesh = useRef<THREE.Mesh>(null);
   const hover = useRef(false);
 
-  const geometry = useMemo(() => new IcosahedronGeometry(1.5, 40), []);
+  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.5, 40), []);
 
-  const uniforms = useMemo(
-    () => ({
-      u_time: { value: 0 },
-      u_intensity: { value: intensity },
-      u_glow: { value: glow },
-      u_color: { value: { r: color[0], g: color[1], b: color[2] } },
-    }),
-    [intensity, glow, color]
-  );
+  // 👇 useRef statt useMemo, damit der Shader-Zustand dynamisch bleibt
+  const uniforms = useRef({
+    u_time: { value: 0 },
+    u_intensity: { value: intensity },
+    u_glow: { value: glow },
+    //u_color: { value: new THREE.Color(...color) },
+    u_color: { value: new THREE.Color(0.2, 1.0, 0.4) },
+  }).current;
 
   useFrame((state) => {
     const { clock } = state;
+
     if (mesh.current) {
-      if (pulse) {
-        const scaleValue =
-          scale + Math.sin(clock.elapsedTime * pulseSpeed) * pulseAmount;
-        mesh.current.scale.set(scaleValue, scaleValue, scaleValue);
-      }
+      const mat = mesh.current.material as THREE.ShaderMaterial; // <--- DAS hier braucht es!
+
       mesh.current.rotation.y += 0.002;
       mesh.current.rotation.x += 0.001;
       mesh.current.position.y =
         position[1] + Math.sin(clock.elapsedTime * 0.5) * 0.02;
 
-      const mat = mesh.current.material as ShaderMaterial;
-      mat.uniforms.u_time.value = 0.4 * clock.getElapsedTime();
+      mat.uniforms.u_time.value = clock.getElapsedTime();
       mat.uniforms.u_intensity.value = MathUtils.lerp(
         mat.uniforms.u_intensity.value,
         hover.current ? hoverIntensity : intensity,
         0.02
       );
+
+      // 🎨 Dynamische Farbe setzen (hier war dein Fehler)
+      if (mat.uniforms.u_color && color) {
+        mat.uniforms.u_color.value.set(...color);
+      }
     }
   });
 
   return (
     <mesh
       ref={mesh}
+      geometry={geometry}
+      position={position}
       scale={scale}
-      position={new THREE.Vector3(...position)}
       onPointerOver={() => (hover.current = true)}
-      onPointerOut={() => (hover.current = false)}
-      {...props}>
-      <primitive object={geometry} attach="geometry" />
+      onPointerOut={() => (hover.current = false)}>
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        transparent
+        transparent={true}
         depthWrite={false}
         depthTest={true}
         blending={AdditiveBlending}
