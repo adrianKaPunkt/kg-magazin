@@ -7,6 +7,7 @@ export const initialPhase = {
   rgb: [149, 249, 244] as [number, number, number],
   glow: 0.2,
   intensity: 0.2,
+  scale: 0.6,
   position: {
     desktop: [0, 0, 0] as [number, number, number],
     mobile: [0, 1.2, 0] as [number, number, number],
@@ -23,8 +24,9 @@ export const diaPhases: DiaPhase[] = [
     glow: 0.3,
     intensity: 0.25,
     quote: 'Ein Tropfen Vision fällt ins Unbekannte.',
+    scale: 0.6,
     position: {
-      desktop: [0, 1.4, 0],
+      desktop: [0, 0, 0],
       mobile: [0, 1.2, 0],
     },
   },
@@ -37,8 +39,9 @@ export const diaPhases: DiaPhase[] = [
     glow: 0.4,
     intensity: 0.3,
     quote: 'Ideen formen Welten, noch bevor sie existieren.',
+    scale: 0.6,
     position: {
-      desktop: [0.5, 1.6, 0],
+      desktop: [0, 0, 0],
       mobile: [0, 1.4, 0],
     },
   },
@@ -51,8 +54,9 @@ export const diaPhases: DiaPhase[] = [
     glow: 0.5,
     intensity: 0.4,
     quote: 'Der Moment, in dem Vision Realität wird.',
+    scale: 0.6,
     position: {
-      desktop: [0, 1.8, 0],
+      desktop: [0, 0, 0],
       mobile: [0, 1.4, 0],
     },
   },
@@ -67,6 +71,7 @@ export type DiaPhase = {
   glow?: number;
   intensity?: number;
   quote?: string;
+  scale?: number;
   position?: {
     desktop: [number, number, number];
     mobile: [number, number, number];

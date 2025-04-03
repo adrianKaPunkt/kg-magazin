@@ -36,7 +36,7 @@ const DIAPrincip = () => {
         end: 'bottom bottom',
         onEnter: () => setPhase(phase),
         onEnterBack: () => setPhase(phase),
-        markers: true,
+        markers: false,
       });
     });
 
@@ -53,7 +53,7 @@ const DIAPrincip = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#blob-trigger',
-        start: '22% 22%',
+        start: '21% 21%',
         end: 'bottom bottom',
         scrub: 1,
         toggleActions: 'play none none reverse',
@@ -75,7 +75,7 @@ const DIAPrincip = () => {
   return (
     <>
       {/* Blob-Trigger für ScrollTrigger */}
-      <div className="relative mt-64">
+      <div className="relative mt-56">
         <div id="blob-trigger" className="h-16" />
         <h1 className="font-vogue text-5xl lg:text-8xl text-center z-50">
           DAS DIA-PRINZIP
@@ -83,13 +83,13 @@ const DIAPrincip = () => {
         {/* Intro */}
         <section
           ref={initialRef}
-          className="relative h-screen flex justify-center z-50">
+          className="relative h-[120vh] flex justify-center items-center z-50">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="text-center px-6 max-w-xl">
-            <h2 className="leading-relaxed text-3xl md:text-5xl font-light text-neutral-900 pt-[700px]">
+            <h2 className="leading-relaxed text-3xl md:text-5xl font-light text-neutral-900">
               Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte – und
               entfaltet seine Kraft im Universum.
             </h2>
@@ -122,6 +122,7 @@ const DIAPrincip = () => {
             Der Moment, in dem Vision Realität wird.
           </h2>
         </section>
+        <section className="relative z-50 h-screen flex items-center justify-center"></section>
         <div
           id="blob-wrapper"
           className="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">

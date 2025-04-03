@@ -34,7 +34,7 @@ const BlobScene = ({ isMobile }: BlobSceneProps) => {
           />
 
           <Blob
-            scale={isMobile ? 0.25 : 0.35}
+            scale={currentPhase.scale ?? (isMobile ? 0.5 : 0.6)}
             intensity={currentPhase.intensity}
             glow={currentPhase.glow}
             position={
