@@ -7,6 +7,7 @@ import Blob from './Blob';
 import { useBlobPhaseStore } from '@/lib/store/blobPhaseStore';
 import { hexToRgbArray } from '@/lib/hexToRgb';
 import { motion } from 'framer-motion';
+import Cloud from '../Cloud';
 
 type BlobSceneProps = {
   isMobile: boolean;
@@ -21,7 +22,7 @@ const BlobScene = ({ isMobile }: BlobSceneProps) => {
       <motion.div
         className="fixed top-0 left-0 w-full h-screen -z-10"
         animate={{ backgroundColor: currentPhase.backgroundColor }}
-        transition={{ duration: 0.1, ease: 'linear' }}
+        transition={{ duration: 1, ease: 'linear' }}
       />
 
       <motion.div
@@ -42,6 +43,10 @@ const BlobScene = ({ isMobile }: BlobSceneProps) => {
               saturation={0}
               fade
             />
+
+            <Cloud position={[0, 1.2, -3]} opacity={0.15} />
+            <Cloud position={[-2, 0.8, -4]} opacity={0.2} />
+            <Cloud position={[2, 0.6, -4.5]} opacity={0.1} />
 
             <Blob
               scale={currentPhase.scale ?? (isMobile ? 0.25 : 0.35)}

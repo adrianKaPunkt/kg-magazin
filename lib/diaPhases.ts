@@ -10,7 +10,7 @@ export const initialPhase: DiaPhase = {
   scale: 0.6,
   position: {
     desktop: [0, 0, 0] as [number, number, number],
-    mobile: [0, 1.2, 0] as [number, number, number],
+    mobile: [0, 0, 0] as [number, number, number],
   },
 };
 
@@ -19,7 +19,7 @@ export const diaPhases: DiaPhase[] = [
     id: 'dream',
     label: 'DREAM',
     color: '#60DC46',
-    backgroundColor: '#CAD5DA',
+    backgroundColor: '#83B5DA',
     description: 'Alles beginnt\nmit einem Traum.',
     glow: 1,
     intensity: 0.3,
@@ -27,7 +27,7 @@ export const diaPhases: DiaPhase[] = [
     scale: 0.6,
     position: {
       desktop: [0, 0, 0],
-      mobile: [0, 1.2, 0],
+      mobile: [0, 0, 0],
     },
   },
   {
@@ -42,7 +42,7 @@ export const diaPhases: DiaPhase[] = [
     scale: 0.6,
     position: {
       desktop: [0, 0, 0],
-      mobile: [0, 1.4, 0],
+      mobile: [0, 0, 0],
     },
   },
   {
@@ -57,10 +57,26 @@ export const diaPhases: DiaPhase[] = [
     scale: 0.6,
     position: {
       desktop: [0, 0, 0],
-      mobile: [0, 1.4, 0],
+      mobile: [0, 0, 0],
     },
   },
 ];
+
+export const resetPhase: DiaPhase = {
+  id: 'reset',
+  label: 'RESET',
+  color: '#ffffff',
+  backgroundColor: '#ffffff',
+  description: 'Reset to white',
+  glow: 0,
+  intensity: 0,
+  quote: 'Ende der Reise.',
+  scale: 0.6,
+  position: {
+    desktop: [0, 0, 0],
+    mobile: [0, 0, 0],
+  },
+};
 
 export type DiaPhase = {
   id: string;

@@ -1,7 +1,8 @@
-import About from './_components/About';
-import DIAPrincip from './_components/DIAPrincip';
-import Hero from './_components/Hero';
+import About from './_sections/About';
+import DIAPrincip from './_sections/DIAPrincip';
+import Hero from './_sections/Hero';
 import Navbar from './_components/nav/Navbar';
+import MyLife from './_sections/MyLife';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <DIAPrincip />
+      <MyLife />
     </main>
   );
 }

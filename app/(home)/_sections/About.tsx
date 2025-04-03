@@ -112,7 +112,7 @@ const About = () => {
           animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.1 }}
           viewport={{ once: false, amount: 1 }}
-          className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] xl:w-[80%] md:right-5 md:-top-8 lg:top-2 md:scale-x-[-1] lg:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[75%] z-0 hover:scale-110 hover:top-1 transition-all duration-1200 ease-in-out cursor-pointer">
+          className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] xl:w-[80%] md:right-5 md:-top-8 lg:-top-4 md:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[75%] z-0 hover:scale-105 hover:-top-4 transition-all duration-1200 ease-in-out cursor-pointer">
           <Image
             src="/images/klaus-gerth.png"
             alt="Klaus Gerth"
