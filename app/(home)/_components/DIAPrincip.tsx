@@ -95,7 +95,7 @@ const DIAPrincip = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               className="z-20 text-center px-6 max-w-xl">
-              <h2 className="leading-relaxed text-2xl md:text-3xl font-light text-neutral-900 pointer-events-auto mt-[600px]">
+              <h2 className="leading-relaxed text-2xl md:text-3xl font-light text-neutral-900 pointer-events-auto mt-[800px] mb-[400px]">
                 Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte –
                 und entfaltet seine Kraft im Universum.
               </h2>
