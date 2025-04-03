@@ -10,10 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface BookCarouselProps {
   products: {
-    id: string;
+    id: number;
     slug: string;
     image_url: string;
     description: string;
+    url: string;
   }[];
 }
 
@@ -80,7 +81,7 @@ export default function BookCarousel({ products }: BookCarouselProps) {
                       transform: `rotateY(${angle}deg) translateZ(250px)`,
                     }}>
                     <Link
-                      href={`/shop/${book.slug}`}
+                      href={book.url}
                       className={`${styles.bookFront} hover:scale-110`}
                       style={{
                         backgroundImage: `url(${
