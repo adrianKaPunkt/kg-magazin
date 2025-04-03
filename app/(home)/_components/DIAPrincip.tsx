@@ -46,7 +46,7 @@ const DIAPrincip = () => {
       ScrollTrigger.create({
         trigger: initialRef.current,
         start: 'top center',
-        end: 'bottom top',
+        end: 'top top',
         onEnter: () => setPhase(initialPhase),
         onEnterBack: () => setPhase(initialPhase),
         markers: false,
@@ -80,7 +80,7 @@ const DIAPrincip = () => {
     <>
       {/* Blob-Trigger für ScrollTrigger */}
       <div className="relative mt-56">
-        <div id="blob-trigger" className="z-20 h-16 bg-amber-400" />
+        <div id="blob-trigger" className="z-20 h-16" />
         {/* Intro */}
         <section
           ref={initialRef}
