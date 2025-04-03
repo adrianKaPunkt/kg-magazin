@@ -37,7 +37,7 @@ const Magazin = () => {
     <div className="min-h-screen w-full grid place-items-center bg-white overflow-auto pt-4 pb-12">
       <div
         style={{ containerType: 'inline-size' }}
-        className="
+        className={`
           aspect-[2/3]
           w-full
           max-w-[420px]
@@ -53,7 +53,7 @@ const Magazin = () => {
           md:shadow-xl
           md:rounded-md
           overflow-hidden
-        ">
+        `}>
         {/* Titel */}
         <motion.h1
           initial={{ y: -30, opacity: 0 }}

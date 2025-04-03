@@ -1,46 +1,74 @@
-export const diaPhases = [
+export const initialPhase = {
+  id: 'initial',
+  label: 'INITIAL',
+  color: '#95F9F4',
+  backgroundColor: '#ffffff',
+  description: 'Initial Phase',
+  rgb: [149, 249, 244] as [number, number, number],
+  glow: 0.2,
+  intensity: 0.2,
+  position: {
+    desktop: [0, 0, 0] as [number, number, number],
+    mobile: [0, 1.2, 0] as [number, number, number],
+  },
+};
+
+export const diaPhases: DiaPhase[] = [
   {
     id: 'dream',
     label: 'DREAM',
-    color: '#C49A6C',
-    description: 'Alles beginnt mit einem Traum.',
-    rgb: [140, 250, 55],
+    color: '#60DC46',
+    backgroundColor: '#CAD5DA',
+    description: 'Alles beginnt\nmit einem Traum.',
     glow: 0.3,
     intensity: 0.25,
     quote: 'Ein Tropfen Vision fällt ins Unbekannte.',
-    position: [0, 1.4, 0],
+    position: {
+      desktop: [0, 1.4, 0],
+      mobile: [0, 1.2, 0],
+    },
   },
   {
     id: 'imagine',
     label: 'IMAGINE',
-    color: '#B28BFF',
-    description: 'Die Kraft der Vorstellung.',
-    rgb: [236, 50, 250],
+    color: '#24A9EF',
+    backgroundColor: '#0E1E36',
+    description: 'Die Kraft\nder Vorstellung.',
     glow: 0.4,
     intensity: 0.3,
     quote: 'Ideen formen Welten, noch bevor sie existieren.',
-    position: [0.5, 1.6, 0],
+    position: {
+      desktop: [0.5, 1.6, 0],
+      mobile: [0, 1.4, 0],
+    },
   },
   {
     id: 'act',
     label: 'ACT',
-    color: '#D9475A',
-    description: 'Der Mut, es zu tun.',
-    rgb: [93, 250, 123],
+    color: '#EB35F5',
+    backgroundColor: '#000000',
+    description: 'Der Mut,\nes zu tun.',
     glow: 0.5,
     intensity: 0.4,
     quote: 'Der Moment, in dem Vision Realität wird.',
-    position: [0, 1.8, 0],
+    position: {
+      desktop: [0, 1.8, 0],
+      mobile: [0, 1.4, 0],
+    },
   },
 ];
 
 export type DiaPhase = {
   id: string;
-  word: string;
+  label: string;
   color: string;
-  subtitle: string;
-  rgb: [number, number, number];
+  backgroundColor?: string;
+  description: string;
   glow?: number;
   intensity?: number;
   quote?: string;
+  position?: {
+    desktop: [number, number, number];
+    mobile: [number, number, number];
+  };
 };

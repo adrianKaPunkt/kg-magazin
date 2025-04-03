@@ -1,150 +1,134 @@
 'use client';
 
-import * as THREE from 'three';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import BlobScene from './blob/BlobScene';
-import { useLayoutEffect, useRef } from 'react';
+import { useBlobPhaseStore } from '@/lib/store/blobPhaseStore';
+import { diaPhases, initialPhase } from '@/lib/diaPhases';
+import useMediaQuery from '@/lib/hooks/useMediaQuery';
+
 gsap.registerPlugin(ScrollTrigger);
 
-const blobPhases = [
-  {
-    id: 'intro',
-    label: 'INTRO',
-    description: 'Die Reise beginnt.',
-    rgb: [149, 249, 244],
-    glow: 0.6,
-    intensity: 0.2,
-    quote: 'Alles hat einen Anfang.',
-  },
-  {
-    id: 'dream',
-    label: 'DREAM',
-    description: 'Alles beginnt mit einem Traum.',
-    rgb: [140, 250, 55],
-    glow: 0.3,
-    intensity: 0.25,
-    quote: 'Ein Tropfen Vision fällt ins Unbekannte.',
-  },
-  {
-    id: 'imagine',
-    label: 'IMAGINE',
-    description: 'Die Kraft der Vorstellung.',
-    rgb: [236, 50, 250],
-    glow: 0.4,
-    intensity: 0.3,
-    quote: 'Ideen formen Welten, noch bevor sie existieren.',
-  },
-  {
-    id: 'act',
-    label: 'ACT',
-    description: 'Der Mut, es zu tun.',
-    rgb: [93, 250, 123],
-    glow: 0.5,
-    intensity: 0.4,
-    quote: 'Der Moment, in dem Vision Realität wird.',
-  },
-];
-
 const DIAPrincip = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const blobRef = useRef<THREE.Group | null>(null);
-  const cloudRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const setPhase = useBlobPhaseStore((state) => state.setPhase);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current || !blobRef.current) return;
+  const initialRef = useRef<HTMLDivElement | null>(null);
+  const dreamRef = useRef<HTMLDivElement | null>(null);
+  const imagineRef = useRef<HTMLDivElement | null>(null);
+  const actRef = useRef<HTMLDivElement | null>(null);
 
-    const mesh = blobRef.current.children[0]; // Zugriff auf das Blob-Mesh
-    const material = (mesh as THREE.Mesh).material as THREE.ShaderMaterial;
+  useEffect(() => {
+    const triggers = [
+      { ref: dreamRef, phase: diaPhases[0] },
+      { ref: imagineRef, phase: diaPhases[1] },
+      { ref: actRef, phase: diaPhases[2] },
+    ];
+
+    triggers.forEach(({ ref, phase }) => {
+      if (!ref.current) return;
+
+      ScrollTrigger.create({
+        trigger: ref.current,
+        start: 'center center',
+        end: 'bottom bottom',
+        onEnter: () => setPhase(phase),
+        onEnterBack: () => setPhase(phase),
+        markers: true,
+      });
+    });
+
+    if (initialRef.current) {
+      ScrollTrigger.create({
+        trigger: initialRef.current,
+        start: 'top top',
+        end: 'bottom bottom',
+        onEnter: () => setPhase(initialPhase),
+        onEnterBack: () => setPhase(initialPhase),
+      });
+    }
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: true,
+        trigger: '#blob-trigger',
+        start: '22% 22%',
+        end: 'bottom bottom',
+        scrub: 1,
+        toggleActions: 'play none none reverse',
+        markers: false,
       },
     });
 
-    tl.to(material.uniforms.u_color.value, {
-      r: blobPhases[1].rgb[0] / 255,
-      g: blobPhases[1].rgb[1] / 255,
-      b: blobPhases[1].rgb[2] / 255,
-      duration: 1,
-      ease: 'none',
-    });
-
-    gsap.to('body', {
-      backgroundColor: '#d6ecff', // zartes Hellblau
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top bottom',
-        end: 'top center',
-        scrub: true,
-      },
-    });
-
-    gsap.to(cloudRef.current, {
-      opacity: 1,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+    tl.fromTo(
+      '#blob-wrapper',
+      { xPercent: -100, opacity: 0 },
+      { xPercent: 0, opacity: 1, ease: 'power2.out' }
+    );
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [setPhase]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="px-6 relative min-h-[160vh] mx-auto w-full md:max-w-5xl xl:max-w-7xl bg-white overflow-hidden">
-      {/* Scroll-Einstieg – leerer Bereich oben */}
-      <div className="h-[20vh]" />
+    <>
+      {/* Blob-Trigger für ScrollTrigger */}
+      <div className="relative mt-64">
+        <div id="blob-trigger" className="h-16" />
+        <h1 className="font-vogue text-5xl lg:text-8xl text-center z-50">
+          DAS DIA-PRINZIP
+        </h1>
+        {/* Intro */}
+        <section
+          ref={initialRef}
+          className="relative h-screen flex justify-center z-50">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-center px-6 max-w-xl">
+            <h2 className="leading-relaxed text-3xl md:text-5xl font-light text-neutral-900 pt-[700px]">
+              Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte – und
+              entfaltet seine Kraft im Universum.
+            </h2>
+          </motion.div>
+        </section>
 
-      <h1 className="font-vogue text-5xl lg:text-8xl pb-6 text-center">
-        DAS DIA PRINZIP
-      </h1>
+        {/* DREAM */}
+        <section
+          ref={dreamRef}
+          className="relative z-50 h-screen flex items-center justify-center">
+          <h2 className="text-3xl md:text-5xl font-light text-neutral-900 text-center max-w-xl">
+            Ein Tropfen Vision fällt ins Unbekannte.
+          </h2>
+        </section>
 
-      {/* Text-1 */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4 }}
-        className="flex justify-center pt-80">
-        <h2 className="mt-102 font-lora-semibold leading-snug text-2xl sm:text-3xl md:text-4xl font-light text-center text-neutral-900 max-w-xl">
-          Die Reise beginnt – Ein Tropfen Vision fällt ins Unbekannte – und
-          entfaltet seine Kraft im Universum.
-        </h2>
-      </motion.div>
+        {/* IMAGINE */}
+        <section
+          ref={imagineRef}
+          className="relative z-50 h-screen flex items-center justify-center">
+          <h2 className="text-3xl md:text-5xl font-light text-white text-center max-w-xl">
+            Ideen formen Welten, noch bevor sie existieren.
+          </h2>
+        </section>
 
-      {/* Wolken-Overlay */}
-      <motion.div
-        ref={cloudRef}
-        className="absolute inset-0 z-0 bg-[url('/images/clouds.png')] bg-cover bg-center opacity-0"
-      />
-
-      {/* Text */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="z-10 text-center pt-64">
-        <h2 className="text-3xl md:text-4xl font-light text-neutral-900">
-          Alles beginnt mit einem Traum.
-        </h2>
-      </motion.div>
-
-      {/* Three.js Canvas */}
-      <div className="absolute inset-0 z-0">
-        <BlobScene />
+        {/* ACT */}
+        <section
+          ref={actRef}
+          className="relative z-50 h-screen flex items-center justify-center">
+          <h2 className="text-3xl md:text-5xl font-light text-white text-center max-w-xl">
+            Der Moment, in dem Vision Realität wird.
+          </h2>
+        </section>
+        <div
+          id="blob-wrapper"
+          className="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
+          <BlobScene isMobile={isMobile} />
+        </div>
       </div>
-    </section>
+    </>
   );
 };
 
