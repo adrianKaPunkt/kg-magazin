@@ -4,22 +4,23 @@ import Image from 'next/image';
 
 const MyLife = () => {
   return (
-    <section className="relative w-full h-screen md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
+    <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
       {/* Hintergrundbild */}
-      <div className="w-full inset-0 z-0 pointer-events-none hidden lg:block">
+      <div className="absolute top-0 w-full inset-0 z-0 pointer-events-none hidden lg:block">
         <Image
           src="/images/paper.jpg"
           alt="Klaus Gerth - Über mich"
-          fill
-          className="object-cover opacity-10"
+          width={1000}
+          height={1000}
+          className="object-cover opacity-20 h-[2540px] w-full"
         />
       </div>
       {/* Überschrift */}
       <h1 className="font-vogue text-5xl lg:text-8xl pb-6">MEIN LEBEN</h1>
       <div className="hidden lg:block border-b border-neutral-600"></div>
 
-      {/* Grid und Texte über dem Bild */}
-      <div className="relative z-10 mt-8 lg:mt-16">
+      {/* Grid */}
+      <div className="relative mt-8 lg:mt-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Linker Textblock */}
           <div className="col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
@@ -41,7 +42,7 @@ const MyLife = () => {
           </div>
 
           {/* Absolutes Bild */}
-          <div className="md:absolute w-[100%] md:w-[45%] lg:w-[95%] xl:w-[95%] md:right-5 md:-top-8 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2  z-0 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
+          <div className="md:absolute w-[100%] md:w-[45%] lg:w-[95%] xl:w-[95%] md:right-5 md:-top-8 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
             <Image
               src="/images/gaby-klaus.png"
               alt="Klaus Gerth"
@@ -54,7 +55,7 @@ const MyLife = () => {
           {/* Zitat unter dem Bild */}
           <div className="mt-16 lg:mt-[430px] xl:mt-[510px] xl:mb-16 col-span-4">
             <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
-              <p>“Meine Geschichte beginnt nicht</p>
+              <p>“Meine Geschichte beginnt nicht</p>{' '}
               <p>in Glanz und Erfolg.”</p>
             </h2>
           </div>
@@ -73,9 +74,9 @@ const MyLife = () => {
               bloßes Überleben.
             </p>
           </div>
-          <div className="lg:col-span-2 lg:col-start-3 pl-12">
+          <div className="lg:col-span-2 lg:col-start-3 pl-12 z-10">
             <Image
-              src="/images/kind.jpg"
+              src="/images/kind.png"
               alt="Kindheit"
               width={300}
               height={300}
@@ -83,9 +84,9 @@ const MyLife = () => {
             />
           </div>
           {/* Rechter Textblock */}
-          <div className="lg:col-span-2 pr-12 mt-12">
+          <div className="lg:col-span-2 pr-12 mt-12 z-10">
             <Image
-              src="/images/panzer.jpg"
+              src="/images/panzer.png"
               alt="Kindheit"
               width={300}
               height={300}
@@ -105,7 +106,7 @@ const MyLife = () => {
             </p>
           </div>
         </div>
-        <div className="hidden lg:block h-20 border-t border-neutral-600 mt-12"></div>
+        <div className="hidden mt-16 lg:block h-20 border-t border-neutral-600"></div>
       </div>
     </section>
   );

@@ -168,7 +168,7 @@ const DIAPrincip = () => {
         <section
           id="reset"
           ref={resetRef}
-          className="relative z-20 h-screen flex items-center justify-center"></section>
+          className="relative z-20 h-[33vh] flex items-center justify-center"></section>
 
         {/* BLOB */}
         <div

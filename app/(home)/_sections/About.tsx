@@ -47,7 +47,7 @@ const About = () => {
           src="/images/paper.jpg"
           alt="Klaus Gerth - Über mich"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-20"
         />
       </motion.div>
       {/* Überschrift */}

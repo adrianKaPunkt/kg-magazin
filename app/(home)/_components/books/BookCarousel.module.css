@@ -1,0 +1,56 @@
+.carousel-container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-out;
+}
+
+.bookWrapper {
+  width: 320px;
+  height: 490px;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.bookFront,
+.bookBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bookFront {
+  transform: rotateY(0deg);
+}
+
+.bookBack {
+  transform: rotateY(180deg);
+  filter: brightness(0.95);
+}
+
+.bookReflection,
+.bookBackReflection {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 102%;
+  opacity: 0.3;
+  transform: scaleY(-1);
+  filter: blur(2px);
+  background-size: cover;
+}
+
+.bookBackReflection {
+  transform: rotateY(180deg) scaleY(-1);
+}
