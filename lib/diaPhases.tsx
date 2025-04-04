@@ -1,12 +1,6 @@
-import { ReactNode } from 'react';
-import DreamIcon from '@/components/icons/DreamIcon';
-import ImagineIcon from '@/components/icons/ImagineIcon';
-import ActIcon from '@/components/icons/ActIcon';
-
 export const initialPhase: DiaPhase = {
   id: 'initial',
   label: 'INITIAL',
-  icon: null,
   color: '#95F9F4',
   backgroundColor: '#ffffff',
   description: 'Initial Phase',
@@ -24,7 +18,6 @@ export const diaPhases: DiaPhase[] = [
   {
     id: 'dream',
     label: 'DREAM',
-    icon: <DreamIcon />,
     color: '#60DC46',
     backgroundColor: '#83B5DA',
     description: 'Alles beginnt\nmit einem Traum.',
@@ -40,7 +33,6 @@ export const diaPhases: DiaPhase[] = [
   {
     id: 'imagine',
     label: 'IMAGINE',
-    icon: <ImagineIcon />,
     color: '#24A9EF',
     backgroundColor: '#0E1E36',
     description: 'Die Kraft\nder Vorstellung.',
@@ -56,7 +48,6 @@ export const diaPhases: DiaPhase[] = [
   {
     id: 'act',
     label: 'ACT',
-    icon: <ActIcon />,
     color: '#EB35F5',
     backgroundColor: '#000000',
     description: 'Der Mut,\nes zu tun.',
@@ -74,7 +65,6 @@ export const diaPhases: DiaPhase[] = [
 export const resetPhase: DiaPhase = {
   id: 'reset',
   label: 'RESET',
-  icon: null,
   color: '#ffffff',
   backgroundColor: '#ffffff',
   description: 'Reset to white',
@@ -91,7 +81,6 @@ export const resetPhase: DiaPhase = {
 export type DiaPhase = {
   id: string;
   label: string;
-  icon: ReactNode | null;
   color: string;
   backgroundColor?: string;
   description: string;

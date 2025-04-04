@@ -2,12 +2,13 @@
 
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import Blob from './Blob';
 import { useBlobPhaseStore } from '@/lib/store/blobPhaseStore';
 import { hexToRgbArray } from '@/lib/hexToRgb';
 import { motion } from 'framer-motion';
 import Cloud from '../Cloud';
+import AnimatedStars from './AnimatedStars';
 
 type BlobSceneProps = {
   isMobile: boolean;
@@ -35,14 +36,7 @@ const BlobScene = ({ isMobile }: BlobSceneProps) => {
             <ambientLight intensity={0.4} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
 
-            <Stars
-              radius={100}
-              depth={50}
-              count={3000}
-              factor={4}
-              saturation={0}
-              fade
-            />
+            <AnimatedStars />
 
             <Cloud position={[0, 1.2, -3]} opacity={0.15} />
             <Cloud position={[-2, 0.8, -4]} opacity={0.2} />

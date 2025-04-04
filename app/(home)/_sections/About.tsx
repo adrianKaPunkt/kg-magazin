@@ -131,7 +131,7 @@ const About = () => {
           viewport={{ once: false, amount: 1 }}
           className="mt-16 lg:mt-84 xl:mt-[500px]">
           <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
-            <p>“Nur noch eins war wichtig:</p>{' '}
+            <p>“Nur noch eines war wichtig:</p>{' '}
             <p>Gottes Plan für mein Leben.“</p>
           </h2>
         </motion.div>

@@ -1,6 +1,6 @@
 type DreamIconProps = {
   className?: string;
-  size?: number;
+  size?: string | number;
   color?: string;
 };
 

@@ -61,7 +61,7 @@ const MyLife = () => {
           </div>
 
           {/* Linker Textblock */}
-          <div className="text-base xl:text-xl col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 pr-12">
+          <div className="text-base xl:text-xl col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 pr-12 mt-12">
             <p>
               Meine Geschichte beginnt nicht in Glanz und Erfolg, sondern in
               einer Zeit des Mangels.Ich wuchs als Halbwaise auf – mein Vater
@@ -74,17 +74,17 @@ const MyLife = () => {
               bloßes Überleben.
             </p>
           </div>
-          <div className="lg:col-span-2 lg:col-start-3 pl-12 z-10">
+          <div className="lg:col-span-2 lg:col-start-3 pl-12 z-10 mt-8">
             <Image
               src="/images/kind.png"
               alt="Kindheit"
               width={300}
               height={300}
-              className="w-[120%]"
+              className="w-[120%] hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
             />
           </div>
           {/* Rechter Textblock */}
-          <div className="lg:col-span-2 pr-12 mt-12 z-10">
+          <div className="lg:col-span-2 pr-12 mt-12 z-10 hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer">
             <Image
               src="/images/panzer.png"
               alt="Kindheit"

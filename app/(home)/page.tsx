@@ -5,6 +5,7 @@ import Navbar from './_components/nav/Navbar';
 import MyLife from './_sections/MyLife';
 import Amazing from './_sections/Amazing';
 import Books from './_sections/Books';
+import Grace from './_sections/Grace';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <DIAPrincip />
       <MyLife />
       <Amazing />
+      <Grace />
       <Books />
     </main>
   );

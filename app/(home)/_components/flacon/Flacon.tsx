@@ -7,6 +7,7 @@ interface FlaconProps {
   fillColor?: string;
   positionTop?: string;
   labelPosition?: string;
+  icon?: React.ReactNode;
 }
 
 const Flacon: React.FC<FlaconProps> = ({
@@ -15,9 +16,10 @@ const Flacon: React.FC<FlaconProps> = ({
   fillColor,
   positionTop,
   labelPosition,
+  icon,
 }) => {
   return (
-    <div className="">
+    <div className="hover:rotate-3 hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer">
       <div className="relative">
         <div
           className="z-40 absolute w-[55%]"
@@ -25,13 +27,17 @@ const Flacon: React.FC<FlaconProps> = ({
           <p>{text}</p>
         </div>
         <div
-          className="absolute top-[7%] z-40 text-white font-literata text-3xl text-center"
+          className="absolute z-40 text-white font-literata text-3xl text-center"
           style={{
             top: `7%`,
             left: `${labelPosition}%`,
           }}>
           {title}
         </div>
+        {icon && (
+          <div className="absolute top-[20%] left-[46%] opacity-30">{icon}</div>
+        )}
+
         <div>
           <Image
             src="/images/flacon.png"
