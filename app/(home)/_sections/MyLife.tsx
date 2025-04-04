@@ -12,7 +12,7 @@ const MyLife = () => {
           alt="Klaus Gerth - Über mich"
           width={1000}
           height={1000}
-          className="object-cover opacity-20 h-[2540px] w-full"
+          className="object-cover opacity-20 h-[2100px] w-full"
         />
       </div>
       {/* Überschrift */}

@@ -1,5 +1,7 @@
 import Image from 'next/image';
-import Flacon from '../_components/Flacon';
+import Flacon from '../_components/flacon/Flacon';
+import { flaconText } from '../_components/flacon/flaconText';
+import { diaPhases } from '@/lib/diaPhases';
 
 const Amazing = () => {
   return (
@@ -20,18 +22,12 @@ const Amazing = () => {
       <div className="relative mt-8 lg:mt-16 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="relative col-span-2">
-            <div className="absolute xl:w-[55%] xl:top-96 xl:left-32">
-              <p>
-                Schon als Kind war ich fasziniert von Düften, Crémes und allem,
-                was schön war. Ich bewunderte die eleganten Flacons im
-                Badezimmer meiner Mutter. Mit 25 war es mein großer Traum,
-                einmal Chef einer Kosmetikfirma zu werden. Es war der Wunsch,
-                etwas Schönes zu schaffen – etwas, das Menschen berührt. Dieser
-                Traum hat mich getragen. Und er wurde zum Ausgangspunkt meiner
-                Reise.
-              </p>
-            </div>
-            <Flacon />
+            <Flacon
+              title={flaconText[0].title}
+              text={flaconText[0].decription}
+              fillColor={diaPhases[0].color}
+              positionTop={flaconText[0].positionTop}
+            />
           </div>
           <div className="flex justify-center items-center col-span-2 pl-36">
             <Image
@@ -50,27 +46,20 @@ const Amazing = () => {
             />
           </div>
           <div className="relative lg:col-span-2 lg:mt-44">
-            <div className="absolute xl:w-[55%] xl:top-96 xl:left-32">
-              <p>
-                Ich habe mir immer vorgestellt, eines Tages im Smoking auf
-                Bällen zu stehen, umgeben von Eleganz und Glanz – ein
-                Jet-Set-Leben zu führen. Diese Bilder hatten Macht über mich.
-                Sie gaben mir ein Ziel, ein Gefühl von Bedeutung. In meiner
-                Vorstellung war ich Teil einer Welt, in der Luxus, Stil und
-                Erfolg selbstverständlich waren.
-              </p>
-            </div>
-            <Flacon />
+            <Flacon
+              title={flaconText[1].title}
+              text={flaconText[1].decription}
+              fillColor={diaPhases[1].color}
+              positionTop={flaconText[1].positionTop}
+            />
           </div>
           <div className="relative lg:col-span-2 lg:mt-44">
-            <div className="absolute xl:w-[55%] xl:top-[450px] xl:left-32">
-              <p>
-                Mit 27 Jahren wurde ich schließlich Direktor bei einer
-                internationalen Parfümfirma – der jüngste in der Geschichte des
-                Unternehmens. Ich hatte es geschafft.
-              </p>
-            </div>
-            <Flacon />
+            <Flacon
+              title={flaconText[2].title}
+              text={flaconText[2].decription}
+              fillColor={diaPhases[2].color}
+              positionTop={flaconText[1].positionTop}
+            />
           </div>
           <div className="flex justify-center items-center col-span-2 pl-32">
             <Image
