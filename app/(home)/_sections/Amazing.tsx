@@ -6,6 +6,7 @@ import ImagineIcon from '@/components/icons/ImagineIcon';
 import ActIcon from '@/components/icons/ActIcon';
 
 const Amazing = () => {
+
   return (
     <section className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-64 z-20 text-neutral-900 overflow-hidden mt-9 md:mt-0">
       {/* Hintergrundbild */}
@@ -63,7 +64,7 @@ const Amazing = () => {
               icon={<ImagineIcon color="white" size={25} />}
             />
           </div>
-          <div className="order-5 md:order-5 relative col-span-1 md:col-span-2 lg:mt-44 mb-20">
+          <div className="order-5 md:order-5 relative col-span-1 md:col-span-2 lg:mt-44 lg:mb-20">
             <Flacon
               title="act"
               images={['/images/direktor.png']}
@@ -73,7 +74,7 @@ const Amazing = () => {
               icon={<ActIcon color="white" size={25} />}
             />
           </div>
-          <div className="order-6 md:order-6 lg:flex lg:justify-center lg:items-center col-span-1 md:col-span-2 mt-6 md:mt-0 lg:pr-6 lg:pl-28 lg:text-right">
+          <div className="order-6 md:order-6 lg:flex lg:justify-center lg:items-center col-span-1 md:col-span-2 mt-6 md:mt-0 lg:mb-12 lg:pr-6 lg:pl-28 lg:text-right">
             <p>
               Mit 27 Jahren wurde ich schließlich Direktor bei einer
               internationalen Kosmetikfirma &ldquo;JUVENA&rdquo; – der jüngste

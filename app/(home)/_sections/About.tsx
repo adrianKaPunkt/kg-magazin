@@ -11,7 +11,8 @@ const About = () => {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const imageRef = useRef(null);
-  const quoteRef = useRef(null);
+  const quoteRef1 = useRef(null);
+  const quoteRef2 = useRef(null);
   const bLeftRef = useRef(null);
   const bRightRef = useRef(null);
   const separatorRef2 = useRef(null);
@@ -25,7 +26,7 @@ const About = () => {
   const leftInView = useInView(leftRef, { once: false, amount: 0.1 });
   const rightInView = useInView(rightRef, { once: false, amount: 0.1 });
   const imageInView = useInView(imageRef, { once: false, amount: 0.1 });
-  const quoteInView = useInView(quoteRef, { once: false, amount: 0.1 });
+  const quoteInView = useInView(quoteRef1, { once: false, amount: 0.1 });
   const bLeftInView = useInView(bLeftRef, { once: false, amount: 0.1 });
   const bRightInView = useInView(bRightRef, { once: false, amount: 0.1 });
   const separatorInView2 = useInView(separatorRef2, {
@@ -123,18 +124,30 @@ const About = () => {
         </motion.div>
 
         {/* Zitat unter dem Bild */}
-        <motion.div
-          ref={quoteRef}
-          initial={{ opacity: 0 }}
-          animate={quoteInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: false, amount: 1 }}
-          className="mt-16 lg:mt-84 xl:mt-[500px]">
+        <div className="mt-16 lg:mt-84 xl:mt-[500px]">
           <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
-            <p>“Nur noch eines war wichtig:</p>{' '}
-            <p>Gottes Plan für mein Leben.“</p>
+            <motion.p
+              ref={quoteRef1}
+              initial={{ opacity: 0 }}
+              animate={
+                quoteInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }
+              }
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: false, amount: 1 }}>
+              “Nur noch eines war wichtig:
+            </motion.p>{' '}
+            <motion.p
+              ref={quoteRef2}
+              initial={{ opacity: 0 }}
+              animate={
+                quoteInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }
+              }
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: false, amount: 1 }}>
+              Gottes Plan für mein Leben.“
+            </motion.p>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Grid und Texte unter dem Bild */}
         <div className="grid md:grid-cols-2 gap-8 mt-10 mb-16">

@@ -30,7 +30,7 @@ const Flacon: React.FC<FlaconProps> = ({
   const flaconRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(flaconRef, { once: true, amount: 0.5 });
   const labelLeft = isMobile ? labelPosition[0] : labelPosition[1];
-  const labelTop = isMobile ? '5' : '6.5';
+  const labelTop = isMobile ? '4' : '6.5';
   const iconLeft = isMobile ? '45' : '47';
   const iconTop = isMobile ? '18.5' : '20';
 
