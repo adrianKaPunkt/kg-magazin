@@ -6,7 +6,6 @@ import MyLife from './_sections/MyLife';
 import Amazing from './_sections/Amazing';
 import Grace from './_sections/Grace';
 import Books from './_sections/Books';
-// import Grace from './_sections/Grace';
 
 export default function Home() {
   return (
