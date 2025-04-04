@@ -27,6 +27,7 @@ const Amazing = () => {
               text={flaconText[0].decription}
               fillColor={diaPhases[0].color}
               positionTop={flaconText[0].positionTop}
+              labelPosition={flaconText[0].labelPosition}
             />
           </div>
           <div className="flex justify-center items-center col-span-2 pl-36">
@@ -51,6 +52,7 @@ const Amazing = () => {
               text={flaconText[1].decription}
               fillColor={diaPhases[1].color}
               positionTop={flaconText[1].positionTop}
+              labelPosition={flaconText[1].labelPosition}
             />
           </div>
           <div className="relative lg:col-span-2 lg:mt-44">
@@ -59,6 +61,7 @@ const Amazing = () => {
               text={flaconText[2].decription}
               fillColor={diaPhases[2].color}
               positionTop={flaconText[1].positionTop}
+              labelPosition={flaconText[2].labelPosition}
             />
           </div>
           <div className="flex justify-center items-center col-span-2 pl-32">

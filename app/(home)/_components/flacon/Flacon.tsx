@@ -6,6 +6,7 @@ interface FlaconProps {
   text?: string;
   fillColor?: string;
   positionTop?: string;
+  labelPosition?: string;
 }
 
 const Flacon: React.FC<FlaconProps> = ({
@@ -13,6 +14,7 @@ const Flacon: React.FC<FlaconProps> = ({
   text,
   fillColor,
   positionTop,
+  labelPosition,
 }) => {
   return (
     <div className="">
@@ -22,7 +24,12 @@ const Flacon: React.FC<FlaconProps> = ({
           style={{ top: `${positionTop}%`, left: '23%' }}>
           <p>{text}</p>
         </div>
-        <div className="absolute top-[7%] left-[39%] z-40 text-white font-literata text-3xl text-center">
+        <div
+          className="absolute top-[7%] z-40 text-white font-literata text-3xl text-center"
+          style={{
+            top: `7%`,
+            left: `${labelPosition}%`,
+          }}>
           {title}
         </div>
         <div>

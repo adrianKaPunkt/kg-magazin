@@ -128,7 +128,7 @@ const DIAPrincip = () => {
               className="z-20 text-center px-6 w-full flex justify-center">
               <h2 className="font-literata leading-relaxed text-2xl md:text-3xl xl:text-4xl font-light text-neutral-900 mt-[800px] ">
                 Wie das «DIA-PRINZIP» dich
-                <br /> und die Welt verändern wird.
+                <br /> und die Welt verändern wird
               </h2>
             </motion.div>
           </div>
@@ -139,9 +139,9 @@ const DIAPrincip = () => {
           ref={dreamRef}
           className="relative z-20 h-[300vh] flex items-center justify-center">
           <h2 className="text-center font-literata leading-relaxed text-2xl md:text-3xl xl:text-4xl font-light text-neutral-900">
-            Träume!
+            Träume
             <br />
-            Gott liebt dich und spricht mit dir.
+            Gott liebt dich und spricht mit dir
           </h2>
         </section>
 
@@ -150,7 +150,7 @@ const DIAPrincip = () => {
           ref={imagineRef}
           className="relative z-20 h-[300vh] flex items-center justify-center">
           <h2 className="font-literata text-3xl md:text-5xl font-light text-white text-center max-w-xl">
-            Deine Träume werden zur Vorstellung.
+            Deine Träume werden zur Vorstellung
           </h2>
         </section>
 
@@ -159,7 +159,7 @@ const DIAPrincip = () => {
           ref={actRef}
           className="relative z-20 h-[300vh] flex items-center justify-center">
           <h2 className="text-3xl md:text-5xl font-light text-white text-center max-w-xl">
-            Deine Aktion wird dich zu deiner Berufung führen
+            Deine Aktion wird zu deiner Berufung führen
           </h2>
         </section>
         <section className="relative z-20 h-screen flex items-center justify-center"></section>
