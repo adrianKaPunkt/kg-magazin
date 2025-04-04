@@ -23,7 +23,7 @@ const Grace = () => {
             autoPlay
             playsInline
             loop
-            className="w-[90%] lg:w-[55%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="w-[90%] md:w-[55%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
       </div>

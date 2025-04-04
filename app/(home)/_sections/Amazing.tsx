@@ -6,7 +6,6 @@ import ImagineIcon from '@/components/icons/ImagineIcon';
 import ActIcon from '@/components/icons/ActIcon';
 
 const Amazing = () => {
-
   return (
     <section className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-64 z-20 text-neutral-900 overflow-hidden mt-9 md:mt-0">
       {/* Hintergrundbild */}
@@ -24,7 +23,7 @@ const Amazing = () => {
       </h1>
       <div className="relative mt-8 lg:mt-16 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
-          <div className="order-1 md:order-1 relative col-span-1 md:col-span-2">
+          <div className="order-1 md:order-1 relative col-span-1 lg:col-span-2">
             <Flacon
               title="dream"
               images={['/images/junge.png']}
@@ -34,7 +33,7 @@ const Amazing = () => {
               icon={<DreamIcon color="white" size={25} />}
             />
           </div>
-          <div className="order-2 md:order-2 col-span-1 md:col-span-2 lg:flex lg:items-center lg:pr-6 lg:pl-28 lg:text-right mt-6 md:mt-0 pb-10 md:pb-0">
+          <div className="order-2 md:order-2 col-span-1 lg:col-span-2 md:flex md:items-center md:pr-6 md:pl-28 md:text-right mt-6 md:mt-0 pb-10 md:pb-0">
             <p>
               Schon als Kind war ich fasziniert von Düften, Crémes und allem,
               was schön war. Ich bewunderte die eleganten Flacons im Badezimmer
@@ -44,7 +43,7 @@ const Amazing = () => {
               getragen. Und er wurde zum Ausgangspunkt meiner Reise.
             </p>
           </div>
-          <div className="order-4 md:order-3 col-span-1 md:col-span-2 lg:flex lg:items-center mt-6 md:mt-0 lg:pr-28 lg:pl-6 pb-10 md:pb-0">
+          <div className="order-4 md:order-3 col-span-1 lg:col-span-2 md:flex md:items-center mt-6 md:mt-0 md:pr-28 md:pl-6 pb-10 md:pb-0">
             <p>
               Ich habe mir immer vorgestellt, eines Tages im Smoking auf Bällen
               zu stehen, umgeben von Eleganz und Glanz – ein Jet-Set-Leben zu
@@ -54,7 +53,7 @@ const Amazing = () => {
               waren.
             </p>
           </div>
-          <div className="order-3 md:order-4 relative col-span-1 md:col-span-2 lg:mt-44">
+          <div className="order-3 md:order-4 relative col-span-1 lg:col-span-2 lg:mt-44">
             <Flacon
               title="imagine"
               images={['/images/ai01.png', '/images/ai02.png']}
@@ -64,7 +63,7 @@ const Amazing = () => {
               icon={<ImagineIcon color="white" size={25} />}
             />
           </div>
-          <div className="order-5 md:order-5 relative col-span-1 md:col-span-2 lg:mt-44 lg:mb-20">
+          <div className="order-5 md:order-5 relative col-span-1 lg:col-span-2 lg:mt-44 lg:mb-20">
             <Flacon
               title="act"
               images={['/images/direktor.png']}
@@ -74,7 +73,7 @@ const Amazing = () => {
               icon={<ActIcon color="white" size={25} />}
             />
           </div>
-          <div className="order-6 md:order-6 lg:flex lg:justify-center lg:items-center col-span-1 md:col-span-2 mt-6 md:mt-0 lg:mb-12 lg:pr-6 lg:pl-28 lg:text-right">
+          <div className="order-6 md:order-6 flex items-center col-span-1 lg:col-span-2 mt-6 md:mt-0 lg:mb-12 md:pr-6 md:pl-28 md:text-right">
             <p>
               Mit 27 Jahren wurde ich schließlich Direktor bei einer
               internationalen Kosmetikfirma &ldquo;JUVENA&rdquo; – der jüngste

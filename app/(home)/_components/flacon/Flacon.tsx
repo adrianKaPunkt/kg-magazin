@@ -64,7 +64,7 @@ const Flacon: React.FC<FlaconProps> = ({
   return (
     <div ref={flaconRef}>
       <div
-        className="relative cursor-pointer hover:scale-105 transition-all duration-1200 ease-in-out"
+        className="relative w-full cursor-pointer hover:scale-105 transition-all duration-1200 ease-in-out"
         onClick={handleSpray}>
         <AnimatePresence mode="wait">
           <motion.div

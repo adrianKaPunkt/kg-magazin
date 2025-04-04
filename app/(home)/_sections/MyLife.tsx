@@ -67,7 +67,7 @@ const MyLife = () => {
 
       {/* Grid */}
       <div className="relative mt-8 lg:mt-16">
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+        <div className="md:grid md:grid-cols-4 md:gap-8">
           {/* Linker Textblock */}
           <motion.div
             ref={leftRef}
@@ -75,7 +75,7 @@ const MyLife = () => {
             animate={leftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: false, amount: 1 }}
-            className="md:col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
+            className="col-span-1 md:col-span-2 lg:col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>
               Ich lade dich ein, meine Lebensgeschichte durch die Phasen von
               Dream, Imagine und Act zu entdecken. Denn jeder Abschnitt meines
@@ -106,7 +106,7 @@ const MyLife = () => {
             animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
             transition={{ duration: 1, delay: 0.1 }}
             viewport={{ once: false, amount: 1 }}
-            className="md:absolute md:w-[45%] lg:w-[95%] xl:w-[95%] md:right-5 md:-top-8 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
+            className="lg:absolute md:w-[80%] lg:w-[95%] xl:w-[95%] md:col-span-3 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
             <Image
               src="/images/gaby-klaus.png"
               alt="Klaus Gerth"
@@ -149,7 +149,7 @@ const MyLife = () => {
             animate={bLeftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false, amount: 1 }}
-            className="text-base xl:text-xl col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 lg:pr-12 mt-12">
+            className="text-base xl:text-xl md:col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 lg:pr-12 mt-12">
             <p>
               Meine Geschichte beginnt nicht in Glanz und Erfolg, sondern in
               einer Zeit des Mangels.Ich wuchs als Halbwaise auf – mein Vater
@@ -170,13 +170,13 @@ const MyLife = () => {
             }
             transition={{ duration: 0.4, delay: 0.2 }}
             viewport={{ once: false, amount: 1 }}
-            className="lg:col-span-2 lg:col-start-3 lg:pl-12 z-10 mt-8">
+            className="md:col-span-2 lg:col-start-3 md:flex md:justify-end lg:pl-12 z-10 mt-8">
             <Image
               src="/images/kind.png"
               alt="Kindheit"
               width={300}
               height={300}
-              className="w-[120%] hover:scale-105 hover:-rotate-12 transition-all duration-1200 ease-in-out cursor-pointer"
+              className="w-[120%] md:w-[80%] hover:scale-105 hover:-rotate-12 transition-all duration-1200 ease-in-out cursor-pointer"
             />
           </motion.div>
           {/* Rechter Textblock */}
@@ -188,13 +188,13 @@ const MyLife = () => {
             }
             transition={{ duration: 0.4, delay: 0.2 }}
             viewport={{ once: false, amount: 1 }}
-            className="lg:col-span-2 lg:pr-12 mt-12 z-10 ">
+            className="md:col-span-2 lg:pr-12 mt-12 z-10 ">
             <Image
               src="/images/panzer.png"
               alt="Kindheit"
               width={300}
               height={300}
-              className="w-[120%] hover:scale-105 hover:rotate-12 transition-all duration-1200 ease-in-out cursor-pointer"
+              className="w-[120%] md:w-[80%] hover:scale-105 hover:rotate-12 transition-all duration-1200 ease-in-out cursor-pointer"
             />
           </motion.div>
           <motion.div
