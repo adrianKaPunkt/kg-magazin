@@ -88,7 +88,7 @@ const DIAPrincip = () => {
   return (
     <>
       {/* Blob-Trigger für ScrollTrigger */}
-      <div className="relative mt-56">
+      <div className="w-full relative mt-56">
         <div id="blob-trigger" className="z-20 h-16" />
         {/* Intro */}
         <section

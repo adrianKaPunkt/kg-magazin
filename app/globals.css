@@ -1,11 +1,5 @@
 @import 'tw-animate-css';
 
-html,
-body {
-  scroll-behavior: auto; /* nicht smooth */
-  overscroll-behavior: none;
-}
-
 @font-face {
   font-family: 'Vogue';
   src: url('/fonts/vogue.ttf') format('truetype');

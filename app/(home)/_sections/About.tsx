@@ -55,7 +55,7 @@ const About = () => {
         ref={headlineRef}
         initial={{ opacity: 0, x: -40 }}
         animate={headlineInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
-        transition={{ duration: 1.2, delay: 0.5 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
         viewport={{ once: false, amount: 1 }}
         className="font-vogue text-5xl lg:text-8xl pb-6">
         ÜBER MICH
@@ -64,7 +64,7 @@ const About = () => {
         ref={separatorRef1}
         initial={{ opacity: 0 }}
         animate={separatorInView1 ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1.2, delay: 0.5 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
         viewport={{ once: false, amount: 1 }}
         className="hidden lg:block border-b border-neutral-600"></motion.div>
 
@@ -76,7 +76,7 @@ const About = () => {
             ref={leftRef}
             initial={{ opacity: 0, x: -40 }}
             animate={leftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: false, amount: 1 }}
             className="col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>Hi, mein Name ist Klaus Gerth…</p>
@@ -94,7 +94,7 @@ const About = () => {
             ref={rightRef}
             initial={{ opacity: 0, x: 40 }}
             animate={rightInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: false, amount: 1 }}
             className="col-span-1 text-base xl:text-xl col-start-1 lg:col-start-4 font-light leading-[30px] xl:leading-[40px] pt-6 lg:pt-40 lg:text-right text-neutral-700">
             <p>
@@ -110,7 +110,7 @@ const About = () => {
           ref={imageRef}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
-          transition={{ duration: 2, delay: 0.1 }}
+          transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: false, amount: 1 }}
           className="pt-14 md:pt-0 md:absolute w-[100%] md:w-[45%] xl:w-[80%] md:right-5 md:-top-8 lg:-top-4 md:scale-x-[1] lg:left-1/2 lg:-translate-x-1/2 w- lg:w-[75%] z-0 hover:scale-105 hover:-top-4 transition-all duration-1200 ease-in-out cursor-pointer">
           <Image
@@ -127,7 +127,7 @@ const About = () => {
           ref={quoteRef}
           initial={{ opacity: 0 }}
           animate={quoteInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: false, amount: 1 }}
           className="mt-16 lg:mt-84 xl:mt-[500px]">
           <h2 className="font-lora-semibold text-2xl md:text-4xl text-center leading-relaxed text-neutral-800">
@@ -143,7 +143,7 @@ const About = () => {
             ref={bLeftRef}
             initial={{ opacity: 0, x: -40 }}
             animate={bLeftInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false, amount: 1 }}
             className="text-base xl:text-xl col-span-1 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>
@@ -158,7 +158,7 @@ const About = () => {
             ref={bRightRef}
             initial={{ opacity: 0, x: 40 }}
             animate={bRightInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false, amount: 1 }}
             className="text-base xl:text-xl col-span-1 pt-6 md:pt-0 font-light leading-[30px] xl:leading-[40px] text-neutral-900 md:text-right">
             <p>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const MyLife = () => {
   return (
-    <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
+    <section className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
       {/* Hintergrundbild */}
       <div className="absolute top-0 w-full inset-0 z-0 pointer-events-none hidden lg:block">
         <Image
@@ -21,9 +21,9 @@ const MyLife = () => {
 
       {/* Grid */}
       <div className="relative mt-8 lg:mt-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8">
           {/* Linker Textblock */}
-          <div className="col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
+          <div className="md:col-span-1 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6">
             <p>
               Ich lade dich ein, meine Lebensgeschichte durch die Phasen von
               Dream, Imagine und Act zu entdecken. Denn jeder Abschnitt meines
@@ -33,7 +33,7 @@ const MyLife = () => {
           </div>
 
           {/* Rechter Textblock */}
-          <div className="col-span-1 text-base xl:text-xl col-start-1 lg:col-start-4 font-light leading-[30px] xl:leading-[40px] pt-6 lg:text-right text-neutral-700">
+          <div className="col-span-1 text-base xl:text-xl col-start-1 lg:col-start-4 font-light leading-[30px] xl:leading-[40px] pt-6 lg:text-right text-neutral-700 mb-8 md:pb-0">
             <p>
               Was wie eine klassische Karriere begann,wurde zur geistlichen
               Reise – voller Wendepunkte, leiser Wunder und mutiger
@@ -42,7 +42,7 @@ const MyLife = () => {
           </div>
 
           {/* Absolutes Bild */}
-          <div className="md:absolute w-[100%] md:w-[45%] lg:w-[95%] xl:w-[95%] md:right-5 md:-top-8 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
+          <div className="md:absolute md:w-[45%] lg:w-[95%] xl:w-[95%] md:right-5 md:-top-8 lg:-top-8 lg:left-1/2  lg:-translate-x-1/2 hover:scale-105 hover:-top-8 transition-all duration-1200 ease-in-out cursor-pointer">
             <Image
               src="/images/gaby-klaus.png"
               alt="Klaus Gerth"
@@ -61,7 +61,7 @@ const MyLife = () => {
           </div>
 
           {/* Linker Textblock */}
-          <div className="text-base xl:text-xl col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 pr-12 mt-12">
+          <div className="text-base xl:text-xl col-span-2 font-light leading-[30px] xl:leading-[40px] text-neutral-900 space-y-6 lg:pr-12 mt-12">
             <p>
               Meine Geschichte beginnt nicht in Glanz und Erfolg, sondern in
               einer Zeit des Mangels.Ich wuchs als Halbwaise auf – mein Vater
@@ -74,7 +74,7 @@ const MyLife = () => {
               bloßes Überleben.
             </p>
           </div>
-          <div className="lg:col-span-2 lg:col-start-3 pl-12 z-10 mt-8">
+          <div className="lg:col-span-2 lg:col-start-3 lg:pl-12 z-10 mt-8">
             <Image
               src="/images/kind.png"
               alt="Kindheit"
@@ -84,7 +84,7 @@ const MyLife = () => {
             />
           </div>
           {/* Rechter Textblock */}
-          <div className="lg:col-span-2 pr-12 mt-12 z-10 hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer">
+          <div className="lg:col-span-2 lg:pr-12 mt-12 z-10 hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer">
             <Image
               src="/images/panzer.png"
               alt="Kindheit"
@@ -93,7 +93,7 @@ const MyLife = () => {
               className="w-[120%]"
             />
           </div>
-          <div className="text-base xl:text-xl col-span-2 mt-12 md:pt-0 font-light leading-[30px] xl:leading-[40px] text-neutral-900 md:text-right pl-12">
+          <div className="text-base xl:text-xl col-span-2 mt-12 md:pt-0 font-light leading-[30px] xl:leading-[40px] text-neutral-900 md:text-right lg:pl-12">
             <p>
               In jedem Kapitel meines Lebens findest du diesen Rhythmus: Zuerst
               war da ein Traum – manchmal leise, manchmal drängend. Dann kam die

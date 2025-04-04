@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Flacon from '../_components/flacon/Flacon';
-import { flaconText } from '../_components/flacon/flaconText';
 import { diaPhases } from '@/lib/diaPhases';
 import DreamIcon from '@/components/icons/DreamIcon';
 import ImagineIcon from '@/components/icons/ImagineIcon';
@@ -8,78 +7,78 @@ import ActIcon from '@/components/icons/ActIcon';
 
 const Amazing = () => {
   return (
-    <section className="h-[3400px] relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-64 z-20 text-neutral-900">
+    <section className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-64 z-20 text-neutral-900 overflow-hidden mt-9 md:mt-0">
       {/* Hintergrundbild */}
-      <div className="absolute top-0 w-full inset-0 z-0 pointer-events-none hidden lg:block">
+      <div className="absolute top-0 w-full inset-0 z-0 hidden lg:block">
         <Image
           src="/images/paper2.jpg"
-          alt="Klaus Gerth - Paper"
+          alt="Paper"
           width={1000}
           height={1000}
-          className="object-cover opacity-20 h-[3400px] w-full hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
+          className="object-cover opacity-20 h-[3600px] w-full hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
         />
       </div>
-      <h1 className="font-vogue text-5xl lg:text-8xl pb-6 text-center">
+      <h1 className="font-vogue text-5xl lg:text-8xl pb-6 md:text-center">
         AMAZING
       </h1>
       <div className="relative mt-8 lg:mt-16 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="relative col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+          <div className="order-1 md:order-1 relative col-span-1 md:col-span-2">
             <Flacon
-              title={flaconText[0].title}
-              text={flaconText[0].decription}
+              title="dream"
+              images={['/images/junge.png']}
               fillColor={diaPhases[0].color}
-              positionTop={flaconText[0].positionTop}
-              labelPosition={flaconText[0].labelPosition}
+              positionTop="36"
+              labelPosition={['32', '34']}
               icon={<DreamIcon color="white" size={25} />}
             />
           </div>
-          <div className="flex justify-center items-center col-span-2 pl-36">
-            <Image
-              src="/images/junge.png"
-              alt="Junge Klaus Gerth"
-              width={900}
-              height={900}
-              className="hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
-            />
+          <div className="order-2 md:order-2 col-span-1 md:col-span-2 lg:flex lg:items-center lg:pr-6 lg:pl-28 lg:text-right mt-6 md:mt-0 pb-10 md:pb-0">
+            <p>
+              Schon als Kind war ich fasziniert von Düften, Crémes und allem,
+              was schön war. Ich bewunderte die eleganten Flacons im Badezimmer
+              meiner Mutter. Mit 25 war es mein großer Traum, einmal Chef einer
+              Kosmetikfirma zu werden. Es war der Wunsch, etwas Schönes zu
+              schaffen – etwas, das Menschen berührt. Dieser Traum hat mich
+              getragen. Und er wurde zum Ausgangspunkt meiner Reise.
+            </p>
           </div>
-          <div className="lg:col-span-2 flex justify-center items-center pr-32">
-            <Image
-              src="/images/jetset.png"
-              alt="Klaus Gerth Kollektion"
-              width={900}
-              height={900}
-              className="hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
-            />
+          <div className="order-4 md:order-3 col-span-1 md:col-span-2 lg:flex lg:items-center mt-6 md:mt-0 lg:pr-28 lg:pl-6 pb-10 md:pb-0">
+            <p>
+              Ich habe mir immer vorgestellt, eines Tages im Smoking auf Bällen
+              zu stehen, umgeben von Eleganz und Glanz – ein Jet-Set-Leben zu
+              führen. Diese Bilder hatten Macht über mich. Sie gaben mir ein
+              Ziel, ein Gefühl von Bedeutung. In meiner Vorstellung war ich Teil
+              einer Welt, in der Luxus, Stil und Erfolg selbstverständlich
+              waren.
+            </p>
           </div>
-          <div className="relative lg:col-span-2 lg:mt-44">
+          <div className="order-3 md:order-4 relative col-span-1 md:col-span-2 lg:mt-44">
             <Flacon
-              title={flaconText[1].title}
-              text={flaconText[1].decription}
+              title="imagine"
+              images={['/images/ai01.png', '/images/ai02.png']}
               fillColor={diaPhases[1].color}
-              positionTop={flaconText[1].positionTop}
-              labelPosition={flaconText[1].labelPosition}
+              positionTop="43"
+              labelPosition={['28', '31']}
               icon={<ImagineIcon color="white" size={25} />}
             />
           </div>
-          <div className="relative lg:col-span-2 lg:mt-44">
+          <div className="order-5 md:order-5 relative col-span-1 md:col-span-2 lg:mt-44 mb-20">
             <Flacon
-              title={flaconText[2].title}
-              text={flaconText[2].decription}
+              title="act"
+              images={['/images/direktor.png']}
               fillColor={diaPhases[2].color}
-              positionTop={flaconText[1].positionTop}
-              labelPosition={flaconText[2].labelPosition}
+              positionTop="35"
+              labelPosition={['42', '41']}
               icon={<ActIcon color="white" size={25} />}
             />
           </div>
-          <div className="flex justify-center items-center col-span-2 pl-32">
-            <Image
-              src="/images/direktor.png"
-              alt="Klaus Gerth Direktor"
-              width={900}
-              height={900}
-              className="hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
-            />
+          <div className="order-6 md:order-6 lg:flex lg:justify-center lg:items-center col-span-1 md:col-span-2 mt-6 md:mt-0 lg:pr-6 lg:pl-28 lg:text-right">
+            <p>
+              Mit 27 Jahren wurde ich schließlich Direktor bei einer
+              internationalen Kosmetikfirma &ldquo;JUVENA&rdquo; – der jüngste
+              in der Geschichte des Unternehmens. Ich hatte es geschafft.
+            </p>
           </div>
         </div>
       </div>
