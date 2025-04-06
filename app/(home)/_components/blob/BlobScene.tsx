@@ -6,8 +6,7 @@ import AnimatedStars from './AnimatedStars';
 import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 export default function BlobScene() {
-  const { position, scale, intensity, glow, color, setBlobRef } =
-    useDiaPhaseStore();
+  const { position, scale, intensity, glow, setBlobRef } = useDiaPhaseStore();
   const localRef = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
@@ -24,7 +23,10 @@ export default function BlobScene() {
         gl={{ preserveDrawingBuffer: true }}
         onCreated={({ gl }) => {
           gl.setClearColor('#ffffff');
-          (window as any).__diaRenderer = gl;
+          (
+            window as Window &
+              typeof globalThis & { __diaRenderer?: THREE.WebGLRenderer }
+          ).__diaRenderer = gl;
         }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1.2} />
@@ -46,7 +48,6 @@ export default function BlobScene() {
 
         <Blob
           blobRef={localRef}
-          color={color}
           position={position}
           scale={scale}
           intensity={intensity}
