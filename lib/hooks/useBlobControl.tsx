@@ -6,7 +6,12 @@ export const useBlobControl = () => {
   const localRef = useRef<Mesh<BufferGeometry, Material | Material[]> | null>(
     null
   );
-  const setBlobRef = useDiaPhaseStore((state) => state.setBlobRef);
+  const setBlobRef = useDiaPhaseStore(
+    (state) =>
+      state.setBlobRef as (ref: {
+        current: Mesh<BufferGeometry, Material | Material[]> | null;
+      }) => void
+  );
 
   useEffect(() => {
     if (localRef.current) {
@@ -14,7 +19,7 @@ export const useBlobControl = () => {
     }
 
     return () => {
-      setBlobRef({ current: null }); // Cleanup beim Unmount
+      setBlobRef({ current: null });
     };
   }, [setBlobRef]);
 
