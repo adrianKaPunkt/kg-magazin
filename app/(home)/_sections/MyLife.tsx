@@ -30,7 +30,9 @@ const MyLife = () => {
   const imgLeftInView = useInView(imgLeftRef, { once: false, amount: 0.1 });
 
   return (
-    <section className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
+    <section
+      id="mein-leben"
+      className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
       {/* Hintergrundbild */}
       <motion.div
         ref={paperRef}
@@ -44,7 +46,7 @@ const MyLife = () => {
           alt="Klaus Gerth - Über mich"
           width={1000}
           height={1000}
-          className="object-cover opacity-20 h-[2100px] w-full"
+          className="object-cover opacity-20 h-[2010px] w-full"
         />
       </motion.div>
       {/* Überschrift */}

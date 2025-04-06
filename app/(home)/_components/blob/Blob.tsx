@@ -1,88 +1,102 @@
 'use client';
 
-import React, { useRef, useMemo } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { MathUtils, AdditiveBlending } from 'three';
+import { AdditiveBlending, MathUtils } from 'three';
 
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
+import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 type BlobProps = {
-  scale?: number;
-  intensity?: number;
+  scale: number;
+  intensity: number;
   hoverIntensity?: number;
-  glow?: number;
-  position?: [number, number, number];
-  color?: [number, number, number]; // normalized (0–1)
-  pulse?: boolean;
-  pulseAmount?: number;
-  pulseSpeed?: number;
+  glow: number;
+  position: [number, number, number];
+  blobRef?: React.RefObject<THREE.Mesh | null>;
+  materialRef?: React.RefObject<THREE.ShaderMaterial | null>;
 };
 
-const Blob: React.FC<BlobProps> = ({
-  scale = 0.6,
-  intensity = 1,
-  hoverIntensity = 1,
-  glow = 1,
-  position = [0, 0, 0],
-  color = [1, 1, 1], // Default: weiß
-  // pulse = true,
-  // pulseAmount = 0.03,
-  // pulseSpeed = 1,
-}) => {
-  const mesh = useRef<THREE.Mesh>(null);
+const Blob = ({
+  scale,
+  intensity,
+  hoverIntensity = intensity + 0.3,
+  glow,
+  position,
+  blobRef,
+  materialRef,
+}: BlobProps) => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const localMaterialRef = useRef<THREE.ShaderMaterial>(null);
   const hover = useRef(false);
 
   const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.5, 40), []);
 
-  // 👇 useRef statt useMemo, damit der Shader-Zustand dynamisch bleibt
-  const uniforms = useRef({
-    u_time: { value: 0 },
-    u_intensity: { value: intensity },
-    u_glow: { value: glow },
-    //u_color: { value: new THREE.Color(...color) },
-    u_color: { value: new THREE.Color(0.2, 1.0, 0.4) },
-  }).current;
+  const uniforms = useMemo(
+    () => ({
+      u_time: { value: 0 },
+      u_intensity: { value: intensity },
+      u_glow: { value: glow },
+      u_color: { value: new THREE.Color(1, 1, 1) }, // Initialfarbe ist egal
+    }),
+    [intensity, glow]
+  );
+
+  const { setBlobRef, targetScale } = useDiaPhaseStore();
+
+  useEffect(() => {
+    if (meshRef.current) {
+      setBlobRef(meshRef);
+    }
+    if (blobRef) blobRef.current = meshRef.current;
+    if (materialRef) materialRef.current = localMaterialRef.current;
+  }, [blobRef, materialRef, setBlobRef]);
 
   useFrame((state) => {
-    const { clock } = state;
+    const mesh = meshRef.current;
+    const mat = localMaterialRef.current;
+    const { color } = useDiaPhaseStore.getState(); // <- aktuelle Farbe
+    const time = state.clock.getElapsedTime();
 
-    if (mesh.current) {
-      const mat = mesh.current.material as THREE.ShaderMaterial; // <--- DAS hier braucht es!
+    if (mesh && mat) {
+      // 🌌 Bewegung & Pulsieren
+      mesh.rotation.y += 0.002;
+      mesh.rotation.x += 0.001;
+      mesh.position.y = position[1] + Math.sin(time * 0.5) * 0.02;
 
-      mesh.current.rotation.y += 0.002;
-      mesh.current.rotation.x += 0.001;
-      mesh.current.position.y =
-        position[1] + Math.sin(clock.elapsedTime * 0.5) * 0.02;
+      // 📦 Sanftes Verkleinern
+      mesh.scale.lerp(targetScale, 0.05);
 
-      mat.uniforms.u_time.value = clock.getElapsedTime();
+      // 💡 Shader-Uniforms
+      mat.uniforms.u_time.value = time;
       mat.uniforms.u_intensity.value = MathUtils.lerp(
         mat.uniforms.u_intensity.value,
         hover.current ? hoverIntensity : intensity,
-        0.02
+        0.05
       );
 
-      // 🎨 Dynamische Farbe setzen (hier war dein Fehler)
-      if (mat.uniforms.u_color && color) {
-        mat.uniforms.u_color.value.set(...color);
-      }
+      // 🎨 FARB-UPDATE!
+      mat.uniforms.u_color.value.set(...color);
+      mat.uniformsNeedUpdate = true;
     }
   });
 
   return (
     <mesh
-      ref={mesh}
+      ref={meshRef}
       geometry={geometry}
       position={position}
       scale={scale}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}>
       <shaderMaterial
+        ref={localMaterialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        transparent={true}
+        transparent
         depthWrite={false}
         depthTest={true}
         blending={AdditiveBlending}

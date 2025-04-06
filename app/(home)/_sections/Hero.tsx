@@ -1,4 +1,4 @@
-import Magazin from './Magazin';
+import Magazin from '../_components/Magazin';
 
 const Hero = () => {
   return (

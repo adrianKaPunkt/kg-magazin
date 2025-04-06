@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { diaPhases } from '@/lib/diaPhases';
+import Link from 'next/link';
 
 const Magazin = () => {
   const [index, setIndex] = useState(0);
@@ -111,7 +112,9 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 1.4 }}
           className="absolute bottom-78 right-[6%] text-right z-20 cursor-pointer"
           style={{ bottom: 'clamp(30%, 3cqh, 12%)' }}>
-          <div className="hover:scale-120 transition-transform duration-450">
+          <Link
+            href="#diaprinzip"
+            className="hover:scale-120 transition-transform duration-450">
             <p
               className="font-helvetica-compressed text-[3rem] uppercase tracking-wide leading-none"
               style={{
@@ -125,7 +128,7 @@ const Magazin = () => {
               <br />
               DIE WELT VERÄNDERN WIRD
             </p>
-          </div>
+          </Link>
         </motion.div>
 
         {/* MEIN LEBEN */}
@@ -135,14 +138,15 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 2 }}
           className="absolute right-[6%] text-right z-20 cursor-pointer "
           style={{ bottom: 'clamp(20%, 3vh, 12%)' }}>
-          <p
+          <Link
+            href="#mein-leben"
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide hover:scale-120 transition-transform duration-450"
             style={{
               color: current.color,
               fontSize: 'clamp(1rem, 8cqw, 4rem)',
             }}>
             MEIN LEBEN
-          </p>
+          </Link>
         </motion.div>
 
         {/* BÜCHER */}
@@ -152,14 +156,15 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 2.5 }}
           className="absolute bottom-36 right-[6%] text-right z-10 cursor-pointer "
           style={{ bottom: 'clamp(10%, 3vh, 12%)' }}>
-          <p
+          <Link
+            href="#books"
             className="font-helvetica-compressed text-[3rem] uppercase tracking-wide hover:scale-120 transition-transform duration-450"
             style={{
               color: current.color,
               fontSize: 'clamp(1rem, 8cqw, 4rem)',
             }}>
             BÜCHER
-          </p>
+          </Link>
         </motion.div>
 
         {/* Bild */}

@@ -37,7 +37,7 @@ const Books = async () => {
   ];
 
   return (
-    <section id="booksection" className="relative z-50 w-full h-screen mt-96">
+    <section id="books" className="relative z-50 w-full h-screen mt-96">
       <BookCarousel2 products={products} />
     </section>
   );
