@@ -10,7 +10,7 @@ import { hexToRgbArray } from '@/lib/utils/hexToRgb';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DreamSection() {
-  const sectionRef = useRef(null);
+  const dreamSectionRef = useRef(null);
   const dreamPlaceholderRef = useRef(null);
   const { blobRef, setColor } = useDiaPhaseStore();
 
@@ -68,14 +68,14 @@ export default function DreamSection() {
           },
         }
       );
-    }, sectionRef);
+    }, dreamSectionRef);
 
     return () => ctx.revert();
   }, [blobRef, setColor]);
 
   return (
     <section
-      ref={sectionRef}
+      ref={dreamSectionRef}
       className="relative w-full h-[200vh] scroll-snap-start snap-start bg-transparent">
       <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none z-10">
         <div className="text-center">

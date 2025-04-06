@@ -8,7 +8,7 @@ import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ActSection() {
-  const sectionRef = useRef(null);
+  const actSectionRef = useRef(null);
   const actPlaceholderRef = useRef(null);
   const { blobRef, setColor } = useDiaPhaseStore();
 
@@ -37,14 +37,14 @@ export default function ActSection() {
           },
         }
       );
-    }, sectionRef);
+    }, actSectionRef);
 
     return () => ctx.revert();
   }, [blobRef, setColor]);
 
   return (
     <section
-      ref={sectionRef}
+      ref={actSectionRef}
       className="relative w-full h-[200vh] scroll-snap-start snap-start bg-transparent">
       <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none z-10">
         <div className="text-center">

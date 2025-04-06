@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
 
+type BlobMesh = THREE.Mesh<
+  THREE.BufferGeometry,
+  THREE.Material | THREE.Material[],
+  THREE.Object3DEventMap
+>;
+
 // ✅ Hilfsfunktion: Hex → RGB
 const hexToRgbArray = (hex: string): [number, number, number] => {
   const col = new THREE.Color(hex);
@@ -10,6 +16,8 @@ const hexToRgbArray = (hex: string): [number, number, number] => {
 type Phase = 'intro' | 'dream' | 'imagine' | 'act';
 
 interface DiaPhaseStore {
+  showCanvas: boolean;
+  setShowCanvas: (value: boolean) => void;
   activePhase: Phase;
   position: [number, number, number];
   scale: number;
@@ -40,24 +48,18 @@ interface DiaPhaseStore {
   ) => void;
 
   setColor: (color: string | [number, number, number]) => void;
-  setBlobRef: (
-    ref: React.RefObject<
-      THREE.Mesh<
-        THREE.BufferGeometry,
-        THREE.Material | THREE.Material[],
-        THREE.Object3DEventMap
-      >
-    >
-  ) => void;
+  setBlobRef: (ref: React.RefObject<BlobMesh>) => void;
 }
 
 export const useDiaPhaseStore = create<DiaPhaseStore>((set) => ({
+  showCanvas: false,
+  setShowCanvas: (value: boolean) => set({ showCanvas: value }),
   activePhase: 'intro',
   position: [0, 0, 0],
   scale: 0.1,
   intensity: 0.6,
   glow: 1.0,
-  color: hexToRgbArray('#004499'),
+  color: hexToRgbArray('#ff4040'),
   blobRef: null,
 
   targetScale: new THREE.Vector3(0.1, 0.1, 0.1),

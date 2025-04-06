@@ -112,23 +112,23 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 1.4 }}
           className="absolute bottom-78 right-[6%] text-right z-20 cursor-pointer"
           style={{ bottom: 'clamp(30%, 3cqh, 12%)' }}>
-          <Link
-            href="#diaprinzip"
-            className="hover:scale-120 transition-transform duration-450">
-            <p
-              className="font-helvetica-compressed text-[3rem] uppercase tracking-wide leading-none"
-              style={{
-                color: current.color,
-                fontSize: 'clamp(1rem, 8cqw, 4rem)',
-              }}>
-              DIA-PRINZIP
-            </p>
-            <p className="text-[6px] lg:text-[10px] text-neutral-600 tracking-wide leading-snug -indent-3">
-              WIE DAS «DIA-PRINZIP» DICH UND
-              <br />
-              DIE WELT VERÄNDERN WIRD
-            </p>
-          </Link>
+          <div className=" hover:scale-120 transition-transform duration-450">
+            <Link href="#diaprinzip">
+              <p
+                className="font-helvetica-compressed text-[3rem] uppercase tracking-wide leading-none"
+                style={{
+                  color: current.color,
+                  fontSize: 'clamp(1rem, 8cqw, 4rem)',
+                }}>
+                DIA-PRINZIP
+              </p>
+              <p className="text-[6px] lg:text-[10px] text-neutral-600 tracking-wide leading-snug -indent-3">
+                WIE DAS «DIA-PRINZIP» DICH UND
+                <br />
+                DIE WELT VERÄNDERN WIRD
+              </p>
+            </Link>
+          </div>
         </motion.div>
 
         {/* MEIN LEBEN */}
@@ -138,15 +138,17 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 2 }}
           className="absolute right-[6%] text-right z-20 cursor-pointer "
           style={{ bottom: 'clamp(20%, 3vh, 12%)' }}>
-          <Link
-            href="#mein-leben"
-            className="font-helvetica-compressed text-[3rem] uppercase tracking-wide hover:scale-120 transition-transform duration-450"
-            style={{
-              color: current.color,
-              fontSize: 'clamp(1rem, 8cqw, 4rem)',
-            }}>
-            MEIN LEBEN
-          </Link>
+          <div className=" hover:scale-120 transition-transform duration-450">
+            <Link
+              href="#mein-leben"
+              className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
+              style={{
+                color: current.color,
+                fontSize: 'clamp(1rem, 8cqw, 4rem)',
+              }}>
+              MEIN LEBEN
+            </Link>
+          </div>
         </motion.div>
 
         {/* BÜCHER */}
@@ -156,15 +158,17 @@ const Magazin = () => {
           transition={{ duration: 1.4, delay: 2.5 }}
           className="absolute bottom-36 right-[6%] text-right z-10 cursor-pointer "
           style={{ bottom: 'clamp(10%, 3vh, 12%)' }}>
-          <Link
-            href="#books"
-            className="font-helvetica-compressed text-[3rem] uppercase tracking-wide hover:scale-120 transition-transform duration-450"
-            style={{
-              color: current.color,
-              fontSize: 'clamp(1rem, 8cqw, 4rem)',
-            }}>
-            BÜCHER
-          </Link>
+          <div className=" hover:scale-120 transition-transform duration-450">
+            <Link
+              href="#books"
+              className="font-helvetica-compressed text-[3rem] uppercase tracking-wide"
+              style={{
+                color: current.color,
+                fontSize: 'clamp(1rem, 8cqw, 4rem)',
+              }}>
+              BÜCHER
+            </Link>
+          </div>
         </motion.div>
 
         {/* Bild */}

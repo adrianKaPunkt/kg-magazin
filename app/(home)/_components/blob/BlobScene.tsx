@@ -6,7 +6,8 @@ import AnimatedStars from './AnimatedStars';
 import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 export default function BlobScene() {
-  const { position, scale, intensity, glow, setBlobRef } = useDiaPhaseStore();
+  const { position, scale, intensity, glow, setBlobRef, showCanvas } =
+    useDiaPhaseStore();
   const localRef = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
@@ -14,6 +15,8 @@ export default function BlobScene() {
       setBlobRef(localRef as React.RefObject<THREE.Mesh>);
     }
   }, [setBlobRef]);
+
+  if (!showCanvas) return null;
 
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">

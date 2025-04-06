@@ -13,9 +13,10 @@ import { diaPhases } from '@/lib/diaPhases';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DIAIntroSection() {
-  const { setPhase, blobRef, setTargetScale, setColor } = useDiaPhaseStore();
+  const { setPhase, blobRef, setTargetScale, setColor, setShowCanvas } =
+    useDiaPhaseStore();
   const introPlaceholderRef = useRef(null);
-  const sectionRef = useRef(null);
+  const introSectionRef = useRef(null);
   const scrollY = useMotionValue(0);
   const textOpacity = useTransform(scrollY, [0.8, 0.95], [0, 1]);
   const textY = useTransform(scrollY, [0.8, 0.95], [100, 0]);
@@ -54,7 +55,7 @@ export default function DIAIntroSection() {
         z: 1.2,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: introSectionRef.current,
           start: 'top top',
           end: '+=3000',
           scrub: true,
@@ -93,7 +94,7 @@ export default function DIAIntroSection() {
           g: 0,
           b: 0,
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: introSectionRef.current,
             start: 'top top',
             end: '+=2500',
             scrub: true,
@@ -133,7 +134,14 @@ export default function DIAIntroSection() {
           },
         }
       );
-    }, sectionRef);
+    }, introSectionRef);
+
+    ScrollTrigger.create({
+      trigger: introSectionRef.current,
+      start: 'top center',
+      onEnter: () => setShowCanvas(true),
+      onLeaveBack: () => setShowCanvas(false),
+    });
 
     return () => ctx.revert();
   }, [blobRef, setColor, setTargetScale]);
@@ -143,7 +151,7 @@ export default function DIAIntroSection() {
       <BlobScene />
 
       <motion.section
-        ref={sectionRef}
+        ref={introSectionRef}
         className="relative w-full h-[400vh] scroll-snap-start snap-start"
         style={{ scrollSnapAlign: 'start' }}>
         <motion.div
