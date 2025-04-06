@@ -9,7 +9,6 @@ export default function BlobScene() {
   const { position, scale, intensity, glow, color, setBlobRef } =
     useDiaPhaseStore();
   const localRef = useRef<THREE.Mesh>(null);
-  const glRef = useRef<THREE.WebGLRenderer>();
 
   useEffect(() => {
     if (localRef.current) {
