@@ -20,7 +20,7 @@ const DiaContent = () => {
           <div className="col-span-4 h-[500px]"></div>
           <div className="col-span-2 col-start-2 text-white">
             <p>
-              Dieses Prinzip wurde für mich zum Wegweiser.Nicht nur im Glauben,
+              Dieses Prinzip wurde für mich zum Wegweiser. Nicht nur im Glauben,
               sondern auch im Alltag, in meiner Arbeit, in meinem Wirken als
               Verleger. Es beschreibt, wie Gott in meinem Leben gewirkt hat –
               Schritt für Schritt.

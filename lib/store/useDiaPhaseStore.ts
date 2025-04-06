@@ -16,7 +16,13 @@ interface DiaPhaseStore {
   intensity: number;
   glow: number;
   color: [number, number, number];
-  blobRef: React.RefObject<THREE.Mesh> | null;
+  blobRef: React.RefObject<
+    THREE.Mesh<
+      THREE.BufferGeometry,
+      THREE.Material | THREE.Material[],
+      THREE.Object3DEventMap
+    >
+  > | null;
 
   // 🆕 Smooth-Ziel-Skalierung
   targetScale: THREE.Vector3;
@@ -34,7 +40,15 @@ interface DiaPhaseStore {
   ) => void;
 
   setColor: (color: string | [number, number, number]) => void;
-  setBlobRef: (ref: React.RefObject<THREE.Mesh | null>) => void;
+  setBlobRef: (
+    ref: React.RefObject<
+      THREE.Mesh<
+        THREE.BufferGeometry,
+        THREE.Material | THREE.Material[],
+        THREE.Object3DEventMap
+      >
+    >
+  ) => void;
 }
 
 export const useDiaPhaseStore = create<DiaPhaseStore>((set) => ({

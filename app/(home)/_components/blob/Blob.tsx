@@ -28,7 +28,7 @@ const Blob = ({
   blobRef,
   materialRef,
 }: BlobProps) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry>>(null);
   const localMaterialRef = useRef<THREE.ShaderMaterial>(null);
   const hover = useRef(false);
 
@@ -48,7 +48,7 @@ const Blob = ({
 
   useEffect(() => {
     if (meshRef.current) {
-      setBlobRef(meshRef);
+      setBlobRef(meshRef as React.RefObject<THREE.Mesh<THREE.BufferGeometry>>);
     }
     if (blobRef) blobRef.current = meshRef.current;
     if (materialRef) materialRef.current = localMaterialRef.current;

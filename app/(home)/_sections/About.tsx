@@ -35,7 +35,7 @@ const About = () => {
   });
 
   return (
-    <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-20">
+    <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-20 bg-white">
       {/* Hintergrundbild */}
       <motion.div
         ref={paperRef}

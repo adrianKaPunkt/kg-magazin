@@ -11,7 +11,7 @@ export default function BlobScene() {
 
   useEffect(() => {
     if (localRef.current) {
-      setBlobRef(localRef);
+      setBlobRef(localRef as React.RefObject<THREE.Mesh>);
     }
   }, [setBlobRef]);
 
