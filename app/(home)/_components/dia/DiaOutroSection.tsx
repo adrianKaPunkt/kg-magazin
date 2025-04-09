@@ -11,7 +11,7 @@ import * as THREE from 'three';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DIAOutroSection() {
-  const { blobRef, setTargetScale, setColor } = useDiaPhaseStore();
+  const { blobRef, setColor } = useDiaPhaseStore();
   const outroPlaceholderRef = useRef(null);
   const sectionRef = useRef(null);
   const scrollY = useMotionValue(0);
@@ -60,7 +60,7 @@ export default function DIAOutroSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [blobRef, setColor, setTargetScale]);
+  }, [blobRef, setColor]);
 
   return (
     <>
