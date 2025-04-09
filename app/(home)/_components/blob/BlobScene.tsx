@@ -6,8 +6,16 @@ import AnimatedStars from './AnimatedStars';
 import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 export default function BlobScene() {
-  const { position, scale, intensity, glow, setBlobRef, showCanvas } =
-    useDiaPhaseStore();
+  const {
+    position,
+    //scale,
+    intensity,
+    glow,
+    setBlobRef,
+    showCanvas,
+    showBlob,
+    setRenderer,
+  } = useDiaPhaseStore();
   const localRef = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
@@ -19,17 +27,15 @@ export default function BlobScene() {
   if (!showCanvas) return null;
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none">
+    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
       <Canvas
         id="dia-canvas"
+        className=""
         camera={{ position: [0, 0, 5], fov: 50 }}
         gl={{ preserveDrawingBuffer: true }}
         onCreated={({ gl }) => {
-          gl.setClearColor('#ffffff');
-          (
-            window as Window &
-              typeof globalThis & { __diaRenderer?: THREE.WebGLRenderer }
-          ).__diaRenderer = gl;
+          gl.setClearColor('#000');
+          setRenderer(gl);
         }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1.2} />
@@ -48,14 +54,15 @@ export default function BlobScene() {
           rotation={[0, 0, 0]}
           rotationSpeed={0.0003}
         />
-
-        <Blob
-          blobRef={localRef}
-          position={position}
-          scale={scale}
-          intensity={intensity}
-          glow={glow}
-        />
+        {showBlob && (
+          <Blob
+            blobRef={localRef}
+            position={position}
+            //scale={scale}
+            intensity={intensity}
+            glow={glow}
+          />
+        )}
       </Canvas>
     </div>
   );

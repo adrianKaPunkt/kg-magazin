@@ -1,19 +1,16 @@
-import ActSection from '../_components/dia/ActSection';
-import DiaContent from '../_components/dia/DiaContent';
-import DIAIntroSection from '../_components/dia/DiaIntroSection';
-import DIAOutroSection from '../_components/dia/DiaOutroSection';
+import DiaIntro from '../_components/dia/DiaIntro';
 import DreamSection from '../_components/dia/DreamSection';
 import ImagineSection from '../_components/dia/ImagineSection';
+import ActSection from '../_components/dia/ActSection';
+import DIAOutroSection from '../_components/dia/DiaOutroSection';
 
 const Dia = () => {
   return (
     <div>
-      <DIAIntroSection />
+      <DiaIntro />
       <DreamSection />
       <ImagineSection />
       <ActSection />
-      <DiaContent />
-      <DIAOutroSection />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import BookCarousel2 from '../_components/books/BookCarousel2';
+import BookCarousel from '../_components/books/BookCarousel';
 
 const Books = async () => {
   const products = [
@@ -37,8 +37,8 @@ const Books = async () => {
   ];
 
   return (
-    <section id="books" className="relative z-50 w-full h-screen mt-96">
-      <BookCarousel2 products={products} />
+    <section id="books" className="z-50 w-full h-screen mt-96">
+      <BookCarousel products={products} />
     </section>
   );
 };

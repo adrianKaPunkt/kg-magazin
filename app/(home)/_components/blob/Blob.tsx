@@ -10,7 +10,7 @@ import fragmentShader from './fragmentShader';
 import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 type BlobProps = {
-  scale: number;
+  //scale: [number, number, number];
   intensity: number;
   hoverIntensity?: number;
   glow: number;
@@ -20,7 +20,7 @@ type BlobProps = {
 };
 
 const Blob = ({
-  scale,
+  //scale = [0, 0, 0],
   intensity,
   hoverIntensity = intensity + 0.3,
   glow,
@@ -44,7 +44,7 @@ const Blob = ({
     [intensity, glow]
   );
 
-  const { setBlobRef, targetScale } = useDiaPhaseStore();
+  const { setBlobRef, scale } = useDiaPhaseStore();
 
   useEffect(() => {
     if (meshRef.current) {
@@ -57,7 +57,7 @@ const Blob = ({
   useFrame((state) => {
     const mesh = meshRef.current;
     const mat = localMaterialRef.current;
-    const { color } = useDiaPhaseStore.getState(); // <- aktuelle Farbe
+    const { color } = useDiaPhaseStore.getState();
     const time = state.clock.getElapsedTime();
 
     if (mesh && mat) {
@@ -67,7 +67,7 @@ const Blob = ({
       mesh.position.y = position[1] + Math.sin(time * 0.5) * 0.02;
 
       // 📦 Sanftes Verkleinern
-      mesh.scale.lerp(targetScale, 0.05);
+      mesh.scale.lerp(scale, 0.05);
 
       // 💡 Shader-Uniforms
       mat.uniforms.u_time.value = time;

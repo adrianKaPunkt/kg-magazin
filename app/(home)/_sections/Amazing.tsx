@@ -18,9 +18,15 @@ const Amazing = () => {
           className="object-cover opacity-20 h-[3600px] w-full hover:scale-105 transition-all duration-1200 ease-in-out cursor-pointer"
         />
       </div>
-      <h1 className="font-vogue text-5xl lg:text-8xl pb-6 md:text-center">
-        AMAZING
-      </h1>
+      <div className="mb-16">
+        <h1 className="font-vogue text-5xl lg:text-8xl md:text-center">
+          AMAZING
+        </h1>
+        <h2 className="font-vogue -mt-3 text-2xl lg:text-4xl md:text-center text-[#5c5c5c5c]">
+          THE DREAM
+        </h2>
+      </div>
+      <div className="hidden lg:block border-b border-neutral-600"></div>
       <div className="relative mt-8 lg:mt-16 text-base xl:text-xl font-light leading-[30px] xl:leading-[40px] text-neutral-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
           <div className="order-1 md:order-1 relative col-span-1 lg:col-span-2">
@@ -31,6 +37,7 @@ const Amazing = () => {
               positionTop="36"
               labelPosition={['32', '34']}
               icon={<DreamIcon color="white" size={25} />}
+              initialFillLevel={0.3}
             />
           </div>
           <div className="order-2 md:order-2 col-span-1 lg:col-span-2 md:flex md:items-center md:pr-6 md:pl-28 md:text-right mt-6 md:mt-0 pb-10 md:pb-0">
@@ -61,6 +68,7 @@ const Amazing = () => {
               positionTop="43"
               labelPosition={['28', '31']}
               icon={<ImagineIcon color="white" size={25} />}
+              initialFillLevel={0.6}
             />
           </div>
           <div className="order-5 md:order-5 relative col-span-1 lg:col-span-2 lg:mt-44 lg:mb-20">

@@ -13,6 +13,7 @@ interface FlaconProps {
   fillColor?: string;
   positionTop?: string;
   icon?: React.ReactNode;
+  initialFillLevel?: number;
 }
 
 const Flacon: React.FC<FlaconProps> = ({
@@ -23,6 +24,7 @@ const Flacon: React.FC<FlaconProps> = ({
   positionTop,
   labelPosition,
   icon,
+  initialFillLevel = 1,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [shouldAnimateIn, setShouldAnimateIn] = useState(true);
@@ -41,7 +43,7 @@ const Flacon: React.FC<FlaconProps> = ({
     setIsMobile(window.innerWidth <= 768);
     if (isInView) {
       setShouldAnimateIn(true);
-      setFillLevel(1);
+      setFillLevel(initialFillLevel);
     }
   }, [isInView]);
 
@@ -126,7 +128,7 @@ const Flacon: React.FC<FlaconProps> = ({
             fillLevel={fillLevel}
             shouldAnimateIn={shouldAnimateIn}
           />
-          <audio ref={audioRef} src="/audio/spray.mp3" />
+          <audio ref={audioRef} src={undefined} />
         </div>
       </div>
     </div>

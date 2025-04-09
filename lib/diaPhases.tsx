@@ -17,7 +17,7 @@ export type DiaPhase = {
 export const initialPhase: DiaPhase = {
   id: 'initial',
   label: 'INITIAL',
-  color: '#ff4040',
+  color: '#ffffff',
   backgroundColor: '#ffffff',
   description: 'Initial Phase',
   glow: 0.8,

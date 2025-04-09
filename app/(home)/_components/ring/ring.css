@@ -1,0 +1,16 @@
+.blur-box {
+  filter: blur(0px);
+  animation: blurLoop 8s ease-in-out infinite;
+}
+
+@keyframes blurLoop {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(60px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
