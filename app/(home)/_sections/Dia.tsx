@@ -2,6 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import BlobScene from '../_components/blob/BlobScene';
+import OrbitingIcons from '../_components/OrbitingIcons';
+import DreamIcon from '@/components/icons/DreamIcon';
+import ImagineIcon from '@/components/icons/ImagineIcon';
+import ActIcon from '@/components/icons/ActIcon';
+import { diaPhases } from '@/lib/diaPhases';
 
 const Dia = () => {
   const diaSectionRef = useRef<HTMLDivElement>(null);
@@ -23,7 +28,7 @@ const Dia = () => {
   return (
     <section
       ref={diaSectionRef}
-      className="relative w-full lg:w-screen overflow-hidden text-white pt-32 pb-64"
+      className="relative w-full lg:w-screen overflow-hidden text-white pb-64"
       style={{ scrollSnapAlign: 'start' }}>
       <BlobScene height={height} />
 
@@ -57,6 +62,18 @@ const Dia = () => {
                 gewirkt hat – Schritt für Schritt.
               </p>
             </div>
+          </div>
+          <div>
+            <OrbitingIcons
+              radius={100}
+              speed={0.5}
+              size={200}
+              icons={[
+                <DreamIcon key="dream" color={diaPhases[0].color} />,
+                <ImagineIcon key="imagine" color={diaPhases[1].color} />,
+                <ActIcon key="act" color={diaPhases[2].color} />,
+              ]}
+            />
           </div>
         </div>
       </div>

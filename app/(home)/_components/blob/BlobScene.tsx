@@ -31,13 +31,13 @@ export default function BlobScene({ height }: BlobSceneProps) {
 
         <AnimatedStars
           radius={10}
-          depth={100}
+          depth={30}
           count={3000}
           factor={5}
-          saturation={0.5}
+          saturation={1}
           fade
           speed={1}
-          color="#ffffff"
+          color="#fff"
           opacity={0.6}
           scale={1}
           position={[0, 0, -10]}
@@ -47,7 +47,7 @@ export default function BlobScene({ height }: BlobSceneProps) {
 
         <Blob
           blobRef={meshRef}
-          position={[0, 0, 0]}
+          position={[0, 0.5, 0]}
           scale={[0.2, 0.2, 0.2]}
           intensity={0.4}
           glow={1}

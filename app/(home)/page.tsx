@@ -14,11 +14,12 @@ export default function Home() {
         <Navbar />
         <Hero />
         <About />
-
+        <div className="h-32 bg-linear-to-b from-white to-black mt-40" />
         <Dia />
-        {/* <MyLife /> */}
-        {/* <Amazing /> */}
-        {/* <Grace /> */}
+        <div className="h-32 bg-linear-to-t from-white to-black" />
+        <MyLife />
+        <Amazing />
+        <Grace />
         {/* <Books /> */}
       </main>
     </>
