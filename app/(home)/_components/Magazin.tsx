@@ -50,9 +50,6 @@ const Magazin = () => {
           h-auto
           relative
           bg-white
-          md:bg-gray-50
-          md:shadow-xl
-          md:rounded-md
           overflow-hidden
         `}>
         {/* Titel */}

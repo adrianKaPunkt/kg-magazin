@@ -1,47 +1,37 @@
-import { useEffect, useRef } from 'react';
+'use client';
+
+import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import Blob from './Blob';
 import AnimatedStars from './AnimatedStars';
-import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
-export default function BlobScene() {
-  const {
-    position,
-    //scale,
-    intensity,
-    glow,
-    setBlobRef,
-    showCanvas,
-    showBlob,
-    setRenderer,
-  } = useDiaPhaseStore();
-  const localRef = useRef<THREE.Mesh>(null);
+interface BlobSceneProps {
+  height?: number;
+}
 
-  useEffect(() => {
-    if (localRef.current) {
-      setBlobRef(localRef as React.RefObject<THREE.Mesh>);
-    }
-  }, [setBlobRef]);
-
-  if (!showCanvas) return null;
+export default function BlobScene({ height }: BlobSceneProps) {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const finalHeight = height && height > 0 ? `${height}px` : '100vh';
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div
+      className="absolute top-0 left-0 w-full h-full z-0"
+      style={{ height: `${finalHeight}px` }}>
       <Canvas
         id="dia-canvas"
-        className=""
+        className="w-full h-full"
         camera={{ position: [0, 0, 5], fov: 50 }}
         gl={{ preserveDrawingBuffer: true }}
         onCreated={({ gl }) => {
           gl.setClearColor('#000');
-          setRenderer(gl);
         }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1.2} />
+
         <AnimatedStars
-          radius={40}
-          depth={80}
+          radius={10}
+          depth={100}
           count={3000}
           factor={5}
           saturation={0.5}
@@ -50,19 +40,19 @@ export default function BlobScene() {
           color="#ffffff"
           opacity={0.6}
           scale={1}
-          position={[0, 0, 0]}
+          position={[0, 0, -10]}
           rotation={[0, 0, 0]}
           rotationSpeed={0.0003}
         />
-        {showBlob && (
-          <Blob
-            blobRef={localRef}
-            position={position}
-            //scale={scale}
-            intensity={intensity}
-            glow={glow}
-          />
-        )}
+
+        <Blob
+          blobRef={meshRef}
+          position={[0, 0, 0]}
+          scale={[0.2, 0.2, 0.2]}
+          intensity={0.4}
+          glow={1}
+          color={[1, 0, 1]} // weiß
+        />
       </Canvas>
     </div>
   );

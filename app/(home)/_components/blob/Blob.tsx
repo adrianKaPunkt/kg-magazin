@@ -7,24 +7,25 @@ import { AdditiveBlending, MathUtils } from 'three';
 
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
-import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 type BlobProps = {
-  //scale: [number, number, number];
+  scale: [number, number, number];
   intensity: number;
   hoverIntensity?: number;
   glow: number;
   position: [number, number, number];
+  color?: [number, number, number]; // neu
   blobRef?: React.RefObject<THREE.Mesh | null>;
   materialRef?: React.RefObject<THREE.ShaderMaterial | null>;
 };
 
 const Blob = ({
-  //scale = [0, 0, 0],
+  scale = [0, 0, 0],
   intensity,
   hoverIntensity = intensity + 0.3,
   glow,
   position,
+  color = [1, 1, 1], // Standardfarbe: weiß
   blobRef,
   materialRef,
 }: BlobProps) => {
@@ -39,37 +40,28 @@ const Blob = ({
       u_time: { value: 0 },
       u_intensity: { value: intensity },
       u_glow: { value: glow },
-      u_color: { value: new THREE.Color(1, 1, 1) }, // Initialfarbe ist egal
+      u_color: { value: new THREE.Color(...color) },
     }),
-    [intensity, glow]
+    [intensity, glow, color]
   );
 
-  const { setBlobRef, scale } = useDiaPhaseStore();
-
   useEffect(() => {
-    if (meshRef.current) {
-      setBlobRef(meshRef as React.RefObject<THREE.Mesh<THREE.BufferGeometry>>);
-    }
     if (blobRef) blobRef.current = meshRef.current;
     if (materialRef) materialRef.current = localMaterialRef.current;
-  }, [blobRef, materialRef, setBlobRef]);
+  }, [blobRef, materialRef]);
 
   useFrame((state) => {
     const mesh = meshRef.current;
     const mat = localMaterialRef.current;
-    const { color } = useDiaPhaseStore.getState();
     const time = state.clock.getElapsedTime();
 
     if (mesh && mat) {
-      // 🌌 Bewegung & Pulsieren
       mesh.rotation.y += 0.002;
       mesh.rotation.x += 0.001;
       mesh.position.y = position[1] + Math.sin(time * 0.5) * 0.02;
 
-      // 📦 Sanftes Verkleinern
-      mesh.scale.lerp(scale, 0.05);
+      mesh.scale.lerp(new THREE.Vector3(...scale), 0.05);
 
-      // 💡 Shader-Uniforms
       mat.uniforms.u_time.value = time;
       mat.uniforms.u_intensity.value = MathUtils.lerp(
         mat.uniforms.u_intensity.value,
@@ -77,7 +69,6 @@ const Blob = ({
         0.05
       );
 
-      // 🎨 FARB-UPDATE!
       mat.uniforms.u_color.value.set(...color);
       mat.uniformsNeedUpdate = true;
     }

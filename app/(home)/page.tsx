@@ -5,7 +5,7 @@ import Dia from './_sections/Dia';
 import MyLife from './_sections/MyLife';
 import Amazing from './_sections/Amazing';
 import Grace from './_sections/Grace';
-import Books from './_sections/Books';
+// import Books from './_sections/Books';
 
 export default function Home() {
   return (
@@ -14,11 +14,12 @@ export default function Home() {
         <Navbar />
         <Hero />
         <About />
+
         <Dia />
-        <MyLife />
-        <Amazing />
-        <Grace />
-        <Books />
+        {/* <MyLife /> */}
+        {/* <Amazing /> */}
+        {/* <Grace /> */}
+        {/* <Books /> */}
       </main>
     </>
   );
