@@ -34,7 +34,8 @@ const OrbitingIcons = ({
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
 
-        el.style.transform = `translate(${x}px, ${y}px)`;
+        // 💡 Pivot zentrieren mit zusätzlichem translate
+        el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
       });
     }
   });
@@ -54,7 +55,7 @@ const OrbitingIcons = ({
               height: size,
               opacity: 1,
             }}
-            className="scale-200 flex flex-col items-center justify-center">
+            className="flex flex-col items-center justify-center">
             {icon}
             <p
               className="text-xs font-vogue mt-3"

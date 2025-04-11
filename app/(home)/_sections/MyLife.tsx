@@ -32,7 +32,7 @@ const MyLife = () => {
   return (
     <section
       id="mein-leben"
-      className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900 overflow-x-hidden">
+      className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900 overflow-hidden">
       {/* Hintergrundbild */}
       <motion.div
         ref={paperRef}
@@ -40,7 +40,7 @@ const MyLife = () => {
         animate={paperInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: false, amount: 1 }}
-        className="absolute top-0 w-full inset-0 z-0 pointer-events-none hidden lg:block">
+        className="absolute top-0 w-full inset-0 z-0 pointer-events-none hidden lg:block ">
         <Image
           src="/images/paper.jpg"
           alt="Klaus Gerth - Über mich"

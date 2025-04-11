@@ -87,7 +87,7 @@ const Dia = () => {
           </div>
           <div className="mt-16 lg:mt-12 flex justify-center">
             <OrbitingIcons
-              radius={50}
+              radius={100}
               speed={0.5}
               size={200}
               text={['DREAM', 'IMAGINE', 'ACT']}
