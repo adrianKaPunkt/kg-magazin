@@ -56,7 +56,7 @@ const Grace = () => {
           <div className="order-3 md:order-4 col-span-2 md:col-span-2 relative my-12">
             <Ring
               label="IMAGINE"
-              images={['/images/grace2-1.jpg']}
+              images={['/images/grace2-1.jpg', '/images/grace2-2.jpg']}
               bgColor={diaPhases[1].color}
               icon={<ImagineIcon color="black" />}
             />
