@@ -1,12 +1,14 @@
 import { diaPhases } from '@/lib/diaPhases';
 import Ring from '../_components/ring/Ring';
 import DreamIcon from '@/components/icons/DreamIcon';
+import ImagineIcon from '@/components/icons/ImagineIcon';
+import ActIcon from '@/components/icons/ActIcon';
 
 const Grace = () => {
   return (
     <section>
       {/* Video */}
-      <div className="relative w-full h-screen md:max-w-5xl xl:max-w-7xl mx-auto mt-36 px-9">
+      <div className="relative w-full h-screen md:max-w-5xl xl:max-w-7xl mx-auto mt-36 mb-20 px-9">
         <div className="mb-6 lg:mb-24">
           <h1 className="font-vogue text-5xl lg:text-8xl md:text-center">
             GRACE
@@ -19,10 +21,14 @@ const Grace = () => {
           {/* <div className="absolute top-0 left-0 z-70 col-span-4">
             <Cloud />
           </div> */}
-          <div className="order-1 md:order-1 col-span-2 md:col-span-2 relative md:my-12">
+          <div className="order-1 md:order-1 col-span-2 md:col-span-2 relative md:my-12 mt-6 md:mt-0 mb-12 md:mb-0">
             <Ring
               label="DREAM"
-              images={['/images/grace1-1.jpg', '/images/grace1-2.jpg']}
+              images={[
+                '/images/grace1-1.jpg',
+                '/images/grace1-2.jpg',
+                '/images/grace1-3.jpg',
+              ]}
               bgColor={diaPhases[0].color}
               icon={<DreamIcon color="black" />}
             />
@@ -47,16 +53,20 @@ const Grace = () => {
               wusste: Das ist der Weg.
             </p>
           </div>
-          <div className="order-3 md:order-4 col-span-2 md:col-span-2 relative md:my-12">
+          <div className="order-3 md:order-4 col-span-2 md:col-span-2 relative my-12">
             <Ring
-              images={['/images/grace1-1.jpg']}
+              label="IMAGINE"
+              images={['/images/grace2-1.jpg']}
               bgColor={diaPhases[1].color}
+              icon={<ImagineIcon color="black" />}
             />
           </div>
-          <div className="order-5 md:order-5 col-span-2 md:col-span-2 relative md:my-12">
+          <div className="order-5 md:order-5 col-span-2 md:col-span-2 relative my-12">
             <Ring
-              images={['/images/grace1-1.jpg']}
+              label="ACT"
+              images={['/images/grace3-1.jpg', '/images/grace3-2.jpg']}
               bgColor={diaPhases[2].color}
+              icon={<ActIcon color="black" />}
             />
           </div>
           <div className="order-6 md:order-6 col-span-2 md:col-span-2 md:text-right pl-0 md:pl-28 md:flex md:items-center">
@@ -70,7 +80,7 @@ const Grace = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center mt-44">
+        <div className="flex justify-center items-center mt-12">
           <video
             src="/videos/himmel_auf_erden.mp4"
             controls

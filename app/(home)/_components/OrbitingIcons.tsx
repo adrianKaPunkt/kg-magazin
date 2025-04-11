@@ -2,18 +2,21 @@
 
 import { useRef } from 'react';
 import { useAnimationFrame } from 'framer-motion';
+import { diaPhases } from '@/lib/diaPhases';
 
 type OrbitingIconsProps = {
   radius?: number;
   speed?: number;
   size?: number;
-  icons: React.ReactNode[]; // z. B. [<DreamIcon />, <ImagineIcon />, <ActIcon />]
+  text?: string[];
+  icons: React.ReactNode[];
 };
 
 const OrbitingIcons = ({
   radius = 100,
   speed = 0.5,
-  size = 48,
+  size = 100,
+  text = [''],
   icons,
 }: OrbitingIconsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -47,11 +50,17 @@ const OrbitingIcons = ({
             key={index}
             style={{
               position: 'absolute',
-              width: `${size}px`,
-              height: `${size}px`,
-              opacity: 0.5,
-            }}>
+              width: size,
+              height: size,
+              opacity: 1,
+            }}
+            className="scale-200 flex flex-col items-center justify-center">
             {icon}
+            <p
+              className="text-xs font-vogue mt-3"
+              style={{ color: diaPhases[index].color }}>
+              {text[index]}
+            </p>
           </div>
         ))}
       </div>

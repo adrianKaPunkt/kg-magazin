@@ -32,7 +32,7 @@ const MyLife = () => {
   return (
     <section
       id="mein-leben"
-      className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900">
+      className="relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 pt-16 lg:mt-40 z-80 text-neutral-900 overflow-x-hidden">
       {/* Hintergrundbild */}
       <motion.div
         ref={paperRef}

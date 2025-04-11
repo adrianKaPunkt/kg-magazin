@@ -7,9 +7,11 @@ import DreamIcon from '@/components/icons/DreamIcon';
 import ImagineIcon from '@/components/icons/ImagineIcon';
 import ActIcon from '@/components/icons/ActIcon';
 import { diaPhases } from '@/lib/diaPhases';
+import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
 
 const Dia = () => {
   const diaSectionRef = useRef<HTMLDivElement>(null);
+  const { currentIndex, setIndex } = useDiaPhaseStore();
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
@@ -25,14 +27,27 @@ const Dia = () => {
       window.removeEventListener('resize', updateHeight);
     };
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((currentIndex + 1) % diaPhases.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [currentIndex, setIndex]);
+
+  if (!diaPhases.length) return null;
+
+  const current = diaPhases[currentIndex] ?? diaPhases[0];
+  if (!current) return null;
+
   return (
     <section
       ref={diaSectionRef}
-      className="relative w-full lg:w-screen overflow-hidden text-white pb-64"
+      className="relative w-full lg:w-screen overflow-hidden text-white"
       style={{ scrollSnapAlign: 'start' }}>
       <BlobScene height={height} />
 
-      <div className="z-10 relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 mt-64 mb-64 text-white">
+      <div className="z-10 relative w-full md:max-w-5xl xl:max-w-7xl lg:mx-auto px-9 mt-32 lg:mt-64 pb-32 text-white">
         <h1 className="font-vogue text-5xl lg:text-8xl pb-6">
           <span className="block md:inline">DAS </span>
           <span>DIA-PRINZIP</span>
@@ -53,7 +68,14 @@ const Dia = () => {
                 schließlich mutig ins Handeln zu kommen (act).
               </p>
             </div>
-            <div className="col-span-4 h-[500px]"></div>
+            <div className="col-span-4 h-[400px] lg:h-[800px] mt-16 lg:mt-24">
+              <div className="flex flex-col items-center">
+                <div className="mb-4 lg:mb-8">{current?.icon}</div>
+                <p className="text-center text-white text-3xl lg:text-5xl font-literata">
+                  {current.label}
+                </p>
+              </div>
+            </div>
             <div className="col-span-2 col-start-2 text-white">
               <p>
                 Dieses Prinzip wurde für mich zum Wegweiser. Nicht nur im
@@ -63,11 +85,12 @@ const Dia = () => {
               </p>
             </div>
           </div>
-          <div>
+          <div className="mt-16 lg:mt-12 flex justify-center">
             <OrbitingIcons
-              radius={100}
+              radius={50}
               speed={0.5}
               size={200}
+              text={['DREAM', 'IMAGINE', 'ACT']}
               icons={[
                 <DreamIcon key="dream" color={diaPhases[0].color} />,
                 <ImagineIcon key="imagine" color={diaPhases[1].color} />,

@@ -3,21 +3,43 @@
 import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
+
 import Blob from './Blob';
 import AnimatedStars from './AnimatedStars';
+import { diaPhases } from '@/lib/diaPhases';
+import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
+import useMediaQuery from '@/lib/hooks/useMediaQuery';
 
 interface BlobSceneProps {
   height?: number;
 }
 
-export default function BlobScene({ height }: BlobSceneProps) {
+const BlobScene = ({ height }: BlobSceneProps) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const finalHeight = height && height > 0 ? `${height}px` : '100vh';
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const index = useDiaPhaseStore((state) => state.currentIndex);
+  const phase = diaPhases[index] ?? diaPhases[0];
+
+  // 📐 Position: mobile vs desktop
+  const position: [number, number, number] = isMobile
+    ? phase.position?.mobile ?? [0, 0, 0]
+    : phase.position?.desktop ?? [0, 0.5, 0];
+
+  // 🧊 Scale: Zahl oder Array
+  const rawScale = isMobile ? phase.scale?.mobile : phase.scale?.desktop;
+  const scale: [number, number, number] = Array.isArray(rawScale)
+    ? (rawScale as [number, number, number])
+    : [rawScale ?? 0.2, rawScale ?? 0.2, rawScale ?? 0.2];
+
+  const glow = phase.glow ?? 1;
+  const intensity = phase.intensity ?? 0.4;
 
   return (
     <div
       className="absolute top-0 left-0 w-full h-full z-0"
-      style={{ height: `${finalHeight}px` }}>
+      style={{ height: finalHeight }}>
       <Canvas
         id="dia-canvas"
         className="w-full h-full"
@@ -47,13 +69,14 @@ export default function BlobScene({ height }: BlobSceneProps) {
 
         <Blob
           blobRef={meshRef}
-          position={[0, 0.5, 0]}
-          scale={[0.2, 0.2, 0.2]}
-          intensity={0.4}
-          glow={1}
-          color={[1, 0, 1]} // weiß
+          position={position}
+          scale={scale}
+          glow={glow}
+          intensity={intensity}
         />
       </Canvas>
     </div>
   );
-}
+};
+
+export default BlobScene;

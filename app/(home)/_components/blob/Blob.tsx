@@ -1,12 +1,15 @@
 'use client';
 
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { AdditiveBlending, MathUtils } from 'three';
 
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
+import { useDiaPhaseStore } from '@/lib/store/useDiaPhaseStore';
+import { diaPhases } from '@/lib/diaPhases';
+import { hexToRgbArray } from '@/lib/utils/hexToRgb';
 
 type BlobProps = {
   scale: [number, number, number];
@@ -14,45 +17,52 @@ type BlobProps = {
   hoverIntensity?: number;
   glow: number;
   position: [number, number, number];
-  color?: [number, number, number];
   blobRef?: React.RefObject<THREE.Mesh | null>;
   materialRef?: React.RefObject<THREE.ShaderMaterial | null>;
 };
 
 const Blob = ({
-  scale = [0, 0, 0],
+  scale = [0.2, 0.2, 0.2],
   intensity,
   hoverIntensity = intensity + 0.3,
   glow,
   position,
-  color = [1, 1, 1],
   blobRef,
   materialRef,
 }: BlobProps) => {
-  const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry>>(null);
-  const localMaterialRef = useRef<THREE.ShaderMaterial>(null);
+  const meshRef = useRef<THREE.Mesh>(null);
+  const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
   const hover = useRef(false);
 
-  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.5, 40), []);
+  const index = useDiaPhaseStore((state) => state.currentIndex);
+  const color = hexToRgbArray(diaPhases[index]?.color ?? '#ffffff');
 
-  const uniforms = useMemo(
-    () => ({
-      u_time: { value: 0 },
-      u_intensity: { value: intensity },
-      u_glow: { value: glow },
-      u_color: { value: new THREE.Color(...color) },
-    }),
-    [intensity, glow, color]
-  );
+  // 🎯 Shader-Uniforms via Ref (bleibt konstant)
+  const uniforms = useRef({
+    u_time: { value: 0 },
+    u_intensity: { value: intensity },
+    u_glow: { value: glow },
+    u_color: { value: new THREE.Color(...color) },
+  });
 
-  // Rotation Handling
+  // 🎨 Update Farbe & Werte zur Laufzeit
+  useEffect(() => {
+    const mat = shaderMaterialRef.current;
+    if (mat) {
+      uniforms.current.u_color.value.set(...color);
+      uniforms.current.u_glow.value = glow;
+      uniforms.current.u_intensity.value = intensity;
+    }
+  }, [color, glow, intensity]);
+
+  // 🌀 Drag-Rotation
   const rotation = useRef({ x: 0, y: 0 });
   const dragStart = useRef<{ x: number; y: number } | null>(null);
   const isDragging = useRef(false);
 
   useEffect(() => {
     if (blobRef) blobRef.current = meshRef.current;
-    if (materialRef) materialRef.current = localMaterialRef.current;
+    if (materialRef) materialRef.current = shaderMaterialRef.current;
 
     const handlePointerDown = (e: PointerEvent) => {
       isDragging.current = true;
@@ -61,13 +71,10 @@ const Blob = ({
 
     const handlePointerMove = (e: PointerEvent) => {
       if (!isDragging.current || !dragStart.current) return;
-
       const deltaX = e.clientX - dragStart.current.x;
       const deltaY = e.clientY - dragStart.current.y;
-
       rotation.current.y += deltaX * 0.005;
       rotation.current.x += deltaY * 0.005;
-
       dragStart.current = { x: e.clientX, y: e.clientY };
     };
 
@@ -87,59 +94,56 @@ const Blob = ({
     };
   }, []);
 
-  useFrame((state) => {
+  // ⏱ Frame-Loop für Animation
+  useFrame(({ clock }) => {
     const mesh = meshRef.current;
-    const mat = localMaterialRef.current;
-    const time = state.clock.getElapsedTime();
+    const mat = shaderMaterialRef.current;
+    const time = clock.getElapsedTime();
 
-    if (mesh && mat) {
-      // Idle rotation (permanent leicht)
-      rotation.current.y += 0.001;
+    if (!mesh || !mat) return;
 
-      // Smooth apply
-      mesh.rotation.x = MathUtils.lerp(
-        mesh.rotation.x,
-        rotation.current.x,
-        0.1
-      );
-      mesh.rotation.y = MathUtils.lerp(
-        mesh.rotation.y,
-        rotation.current.y,
-        0.1
-      );
+    // 🔄 Rotation
+    rotation.current.y += 0.001;
+    mesh.rotation.x = MathUtils.lerp(mesh.rotation.x, rotation.current.x, 0.1);
+    mesh.rotation.y = MathUtils.lerp(mesh.rotation.y, rotation.current.y, 0.1);
 
-      // Floating movement
-      mesh.position.y = position[1] + Math.sin(time * 0.5) * 0.02;
+    // 🫧 Schweben
+    mesh.position.y = position[1] + Math.sin(time * 0.5) * 0.02;
 
-      // Smooth scaling
-      mesh.scale.lerp(new THREE.Vector3(...scale), 0.05);
+    // 🔍 Nur skalieren, wenn sich Scale sichtbar ändert
+    const targetScale = new THREE.Vector3(...scale);
+    if (!mesh.scale.equals(targetScale)) {
+      mesh.scale.lerp(targetScale, 0.05);
+    }
 
-      // Shader updates
+    // 🕐 Nur wenn Shader läuft
+    if (mat.uniforms.u_time) {
       mat.uniforms.u_time.value = time;
-      mat.uniforms.u_intensity.value = MathUtils.lerp(
-        mat.uniforms.u_intensity.value,
-        hover.current ? hoverIntensity : intensity,
-        0.05
-      );
+    }
 
-      mat.uniforms.u_color.value.set(...color);
-      mat.uniformsNeedUpdate = true;
+    // 🟡 Nur Hover-Intensität aktualisieren, wenn sich der Wert ändert
+    const targetIntensity = hover.current ? hoverIntensity : intensity;
+    const current = mat.uniforms.u_intensity.value;
+    const lerped = MathUtils.lerp(current, targetIntensity, 0.05);
+
+    if (Math.abs(current - lerped) > 0.001) {
+      mat.uniforms.u_intensity.value = lerped;
     }
   });
 
   return (
     <mesh
       ref={meshRef}
-      geometry={geometry}
+      geometry={new THREE.IcosahedronGeometry(1.5, 40)}
       position={position}
       scale={scale}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}>
       <shaderMaterial
-        ref={localMaterialRef}
+        ref={shaderMaterialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        uniforms={uniforms}
+        uniforms={uniforms.current}
         transparent
         depthWrite={false}
         depthTest={true}
