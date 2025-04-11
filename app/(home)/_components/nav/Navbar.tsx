@@ -46,7 +46,7 @@ const Navbar = () => {
                 <span className="font-extrabold">GERTH</span>
               </h1>
             </Link>
-            <AudioPlayer src="/audio/amazing_grac.mp3" />
+            <AudioPlayer src="/audio/music.mp3" />
           </div>
 
           {/* Mobile Menu Button (Hamburger/X) */}
