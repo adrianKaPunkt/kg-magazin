@@ -5,8 +5,6 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const About = () => {
-  const paperRef = useRef(null);
-  const separatorRef1 = useRef(null);
   const headlineRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -15,42 +13,26 @@ const About = () => {
   const quoteRef2 = useRef(null);
   const bLeftRef = useRef(null);
   const bRightRef = useRef(null);
-  const separatorRef2 = useRef(null);
 
-  const paperInView = useInView(paperRef, { once: true, amount: 0.5 });
   const headlineInView = useInView(headlineRef, { once: false, amount: 0.5 });
-  const separatorInView1 = useInView(separatorRef1, {
-    once: false,
-    amount: 0.5,
-  });
   const leftInView = useInView(leftRef, { once: false, amount: 0.1 });
   const rightInView = useInView(rightRef, { once: false, amount: 0.1 });
   const imageInView = useInView(imageRef, { once: false, amount: 0.1 });
   const quoteInView = useInView(quoteRef1, { once: false, amount: 0.1 });
   const bLeftInView = useInView(bLeftRef, { once: false, amount: 0.1 });
   const bRightInView = useInView(bRightRef, { once: false, amount: 0.1 });
-  const separatorInView2 = useInView(separatorRef2, {
-    once: false,
-    amount: 0.5,
-  });
 
   return (
     <section className="relative w-full md:max-w-5xl xl:max-w-7xl mx-auto px-9 pt-16 lg:mt-40 z-20 bg-white overflow-x-hidden">
       {/* Hintergrundbild */}
-      <motion.div
-        ref={paperRef}
-        initial={{ opacity: 0 }}
-        animate={paperInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        viewport={{ once: false, amount: 1 }}
-        className="w-full inset-0 z-0 pointer-events-none hidden lg:block">
+      <div className="w-full inset-0 z-0 pointer-events-none hidden lg:block">
         <Image
           src="/images/paper.jpg"
           alt="Klaus Gerth - Über mich"
           fill
           className="object-cover opacity-20"
         />
-      </motion.div>
+      </div>
       {/* Überschrift */}
       <motion.h1
         ref={headlineRef}
@@ -61,13 +43,7 @@ const About = () => {
         className="font-vogue text-5xl lg:text-8xl pb-6">
         ÜBER MICH
       </motion.h1>
-      <motion.div
-        ref={separatorRef1}
-        initial={{ opacity: 0 }}
-        animate={separatorInView1 ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        viewport={{ once: false, amount: 1 }}
-        className="hidden lg:block border-b border-neutral-600"></motion.div>
+      <div className="hidden lg:block border-b border-neutral-600"></div>
 
       {/* Grid und Texte über dem Bild */}
       <div className="relative z-10 mt-8 lg:mt-16">
@@ -181,13 +157,7 @@ const About = () => {
             <p>Und ich traf eine mutige Entscheidung!</p>
           </motion.div>
         </div>
-        <motion.div
-          ref={separatorRef2}
-          initial={{ opacity: 0, x: -40 }}
-          animate={separatorInView2 ? { opacity: 1, x: 0 } : { opacity: 0 }}
-          transition={{ duration: 1.2, delay: 0.5 }}
-          viewport={{ once: false, amount: 1 }}
-          className="hidden lg:block h-20 border-t border-neutral-600"></motion.div>
+        <div className="hidden lg:block h-20 border-t border-neutral-600"></div>
       </div>
     </section>
   );
